@@ -6984,26 +6984,26 @@
     <emu-clause id="sec-iteratorcomplete" type="abstract operation">
       <h1>
         IteratorComplete (
-          _iterResult_: an Object,
+          _iteratorResult_: an Object,
         ): either a normal completion containing a Boolean or a throw completion
       </h1>
       <dl class="header">
       </dl>
       <emu-alg>
-        1. Return ToBoolean(? Get(_iterResult_, *"done"*)).
+        1. Return ToBoolean(? Get(_iteratorResult_, *"done"*)).
       </emu-alg>
     </emu-clause>
 
     <emu-clause id="sec-iteratorvalue" type="abstract operation">
       <h1>
         IteratorValue (
-          _iterResult_: an Object,
+          _iteratorResult_: an Object,
         ): either a normal completion containing an ECMAScript language value or a throw completion
       </h1>
       <dl class="header">
       </dl>
       <emu-alg>
-        1. Return ? Get(_iterResult_, *"value"*).
+        1. Return ? Get(_iteratorResult_, *"value"*).
       </emu-alg>
     </emu-clause>
 
@@ -46538,8 +46538,8 @@ THH:mm:ss.sss
             1. Let _return_ be Completion(GetMethod(_syncIterator_, *"return"*)).
             1. IfAbruptRejectPromise(_return_, _promiseCapability_).
             1. If _return_ is *undefined*, then
-              1. Let _iterResult_ be CreateIteratorResultObject(_value_, *true*).
-              1. Perform ! Call(_promiseCapability_.[[Resolve]], *undefined*, « _iterResult_ »).
+              1. Let _iteratorResult_ be CreateIteratorResultObject(_value_, *true*).
+              1. Perform ! Call(_promiseCapability_.[[Resolve]], *undefined*, « _iteratorResult_ »).
               1. Return _promiseCapability_.[[Promise]].
             1. If _value_ is present, then
               1. Let _result_ be Completion(Call(_return_, _syncIterator_, « _value_ »)).
