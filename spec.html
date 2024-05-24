@@ -2107,10 +2107,10 @@
           <dl class="header">
           </dl>
           <emu-alg>
-            1. Let _lnum_ be ! ToInt32(_x_).
-            1. Let _rnum_ be ! ToUint32(_y_).
-            1. Let _shiftCount_ be ℝ(_rnum_) modulo 32.
-            1. Return the result of left shifting _lnum_ by _shiftCount_ bits. The mathematical value of the result is exactly representable as a 32-bit two's complement bit string.
+            1. Let _lNum_ be ! ToInt32(_x_).
+            1. Let _rNum_ be ! ToUint32(_y_).
+            1. Let _shiftCount_ be ℝ(_rNum_) modulo 32.
+            1. Return the result of left shifting _lNum_ by _shiftCount_ bits. The mathematical value of the result is exactly representable as a 32-bit two's complement bit string.
           </emu-alg>
         </emu-clause>
 
@@ -2124,10 +2124,10 @@
           <dl class="header">
           </dl>
           <emu-alg>
-            1. Let _lnum_ be ! ToInt32(_x_).
-            1. Let _rnum_ be ! ToUint32(_y_).
-            1. Let _shiftCount_ be ℝ(_rnum_) modulo 32.
-            1. Return the result of performing a sign-extending right shift of _lnum_ by _shiftCount_ bits. The most significant bit is propagated. The mathematical value of the result is exactly representable as a 32-bit two's complement bit string.
+            1. Let _lNum_ be ! ToInt32(_x_).
+            1. Let _rNum_ be ! ToUint32(_y_).
+            1. Let _shiftCount_ be ℝ(_rNum_) modulo 32.
+            1. Return the result of performing a sign-extending right shift of _lNum_ by _shiftCount_ bits. The most significant bit is propagated. The mathematical value of the result is exactly representable as a 32-bit two's complement bit string.
           </emu-alg>
         </emu-clause>
 
@@ -2141,10 +2141,10 @@
           <dl class="header">
           </dl>
           <emu-alg>
-            1. Let _lnum_ be ! ToUint32(_x_).
-            1. Let _rnum_ be ! ToUint32(_y_).
-            1. Let _shiftCount_ be ℝ(_rnum_) modulo 32.
-            1. Return the result of performing a zero-filling right shift of _lnum_ by _shiftCount_ bits. Vacated bits are filled with zero. The mathematical value of the result is exactly representable as a 32-bit unsigned bit string.
+            1. Let _lNum_ be ! ToUint32(_x_).
+            1. Let _rNum_ be ! ToUint32(_y_).
+            1. Let _shiftCount_ be ℝ(_rNum_) modulo 32.
+            1. Return the result of performing a zero-filling right shift of _lNum_ by _shiftCount_ bits. Vacated bits are filled with zero. The mathematical value of the result is exactly representable as a 32-bit unsigned bit string.
           </emu-alg>
         </emu-clause>
 
@@ -2238,17 +2238,17 @@
           <dl class="header">
           </dl>
           <emu-alg>
-            1. Let _lnum_ be ! ToInt32(_x_).
-            1. Let _rnum_ be ! ToInt32(_y_).
-            1. Let _lbits_ be the 32-bit two's complement bit string representing ℝ(_lnum_).
-            1. Let _rbits_ be the 32-bit two's complement bit string representing ℝ(_rnum_).
+            1. Let _lNum_ be ! ToInt32(_x_).
+            1. Let _rNum_ be ! ToInt32(_y_).
+            1. Let _lBits_ be the 32-bit two's complement bit string representing ℝ(_lNum_).
+            1. Let _rBits_ be the 32-bit two's complement bit string representing ℝ(_rNum_).
             1. If _op_ is `&amp;`, then
-              1. Let _result_ be the result of applying the bitwise AND operation to _lbits_ and _rbits_.
+              1. Let _result_ be the result of applying the bitwise AND operation to _lBits_ and _rBits_.
             1. Else if _op_ is `^`, then
-              1. Let _result_ be the result of applying the bitwise exclusive OR (XOR) operation to _lbits_ and _rbits_.
+              1. Let _result_ be the result of applying the bitwise exclusive OR (XOR) operation to _lBits_ and _rBits_.
             1. Else,
               1. Assert: _op_ is `|`.
-              1. Let _result_ be the result of applying the bitwise inclusive OR operation to _lbits_ and _rbits_.
+              1. Let _result_ be the result of applying the bitwise inclusive OR operation to _lBits_ and _rBits_.
             1. Return the Number value for the integer represented by the 32-bit two's complement bit string _result_.
           </emu-alg>
         </emu-clause>
@@ -20190,66 +20190,66 @@
       <h1>Runtime Semantics: Evaluation</h1>
       <emu-grammar>RelationalExpression : RelationalExpression `&lt;` ShiftExpression</emu-grammar>
       <emu-alg>
-        1. Let _lref_ be ? Evaluation of |RelationalExpression|.
-        1. Let _lval_ be ? GetValue(_lref_).
-        1. Let _rref_ be ? Evaluation of |ShiftExpression|.
-        1. Let _rval_ be ? GetValue(_rref_).
-        1. Let _r_ be ? IsLessThan(_lval_, _rval_, *true*).
+        1. Let _lRef_ be ? Evaluation of |RelationalExpression|.
+        1. Let _lVal_ be ? GetValue(_lRef_).
+        1. Let _rRef_ be ? Evaluation of |ShiftExpression|.
+        1. Let _rVal_ be ? GetValue(_rRef_).
+        1. Let _r_ be ? IsLessThan(_lVal_, _rVal_, *true*).
         1. If _r_ is *undefined*, return *false*. Otherwise, return _r_.
       </emu-alg>
       <emu-grammar>RelationalExpression : RelationalExpression `&gt;` ShiftExpression</emu-grammar>
       <emu-alg>
-        1. Let _lref_ be ? Evaluation of |RelationalExpression|.
-        1. Let _lval_ be ? GetValue(_lref_).
-        1. Let _rref_ be ? Evaluation of |ShiftExpression|.
-        1. Let _rval_ be ? GetValue(_rref_).
-        1. Let _r_ be ? IsLessThan(_rval_, _lval_, *false*).
+        1. Let _lRef_ be ? Evaluation of |RelationalExpression|.
+        1. Let _lVal_ be ? GetValue(_lRef_).
+        1. Let _rRef_ be ? Evaluation of |ShiftExpression|.
+        1. Let _rVal_ be ? GetValue(_rRef_).
+        1. Let _r_ be ? IsLessThan(_rVal_, _lVal_, *false*).
         1. If _r_ is *undefined*, return *false*. Otherwise, return _r_.
       </emu-alg>
       <emu-grammar>RelationalExpression : RelationalExpression `&lt;=` ShiftExpression</emu-grammar>
       <emu-alg>
-        1. Let _lref_ be ? Evaluation of |RelationalExpression|.
-        1. Let _lval_ be ? GetValue(_lref_).
-        1. Let _rref_ be ? Evaluation of |ShiftExpression|.
-        1. Let _rval_ be ? GetValue(_rref_).
-        1. Let _r_ be ? IsLessThan(_rval_, _lval_, *false*).
+        1. Let _lRef_ be ? Evaluation of |RelationalExpression|.
+        1. Let _lVal_ be ? GetValue(_lRef_).
+        1. Let _rRef_ be ? Evaluation of |ShiftExpression|.
+        1. Let _rVal_ be ? GetValue(_rRef_).
+        1. Let _r_ be ? IsLessThan(_rVal_, _lVal_, *false*).
         1. If _r_ is either *true* or *undefined*, return *false*. Otherwise, return *true*.
       </emu-alg>
       <emu-grammar>RelationalExpression : RelationalExpression `&gt;=` ShiftExpression</emu-grammar>
       <emu-alg>
-        1. Let _lref_ be ? Evaluation of |RelationalExpression|.
-        1. Let _lval_ be ? GetValue(_lref_).
-        1. Let _rref_ be ? Evaluation of |ShiftExpression|.
-        1. Let _rval_ be ? GetValue(_rref_).
-        1. Let _r_ be ? IsLessThan(_lval_, _rval_, *true*).
+        1. Let _lRef_ be ? Evaluation of |RelationalExpression|.
+        1. Let _lVal_ be ? GetValue(_lRef_).
+        1. Let _rRef_ be ? Evaluation of |ShiftExpression|.
+        1. Let _rVal_ be ? GetValue(_rRef_).
+        1. Let _r_ be ? IsLessThan(_lVal_, _rVal_, *true*).
         1. If _r_ is either *true* or *undefined*, return *false*. Otherwise, return *true*.
       </emu-alg>
       <emu-grammar>RelationalExpression : RelationalExpression `instanceof` ShiftExpression</emu-grammar>
       <emu-alg>
-        1. Let _lref_ be ? Evaluation of |RelationalExpression|.
-        1. Let _lval_ be ? GetValue(_lref_).
-        1. Let _rref_ be ? Evaluation of |ShiftExpression|.
-        1. Let _rval_ be ? GetValue(_rref_).
-        1. Return ? InstanceofOperator(_lval_, _rval_).
+        1. Let _lRef_ be ? Evaluation of |RelationalExpression|.
+        1. Let _lVal_ be ? GetValue(_lRef_).
+        1. Let _rRef_ be ? Evaluation of |ShiftExpression|.
+        1. Let _rVal_ be ? GetValue(_rRef_).
+        1. Return ? InstanceofOperator(_lVal_, _rVal_).
       </emu-alg>
       <emu-grammar>RelationalExpression : RelationalExpression `in` ShiftExpression</emu-grammar>
       <emu-alg>
-        1. Let _lref_ be ? Evaluation of |RelationalExpression|.
-        1. Let _lval_ be ? GetValue(_lref_).
-        1. Let _rref_ be ? Evaluation of |ShiftExpression|.
-        1. Let _rval_ be ? GetValue(_rref_).
-        1. If _rval_ is not an Object, throw a *TypeError* exception.
-        1. Return ? HasProperty(_rval_, ? ToPropertyKey(_lval_)).
+        1. Let _lRef_ be ? Evaluation of |RelationalExpression|.
+        1. Let _lVal_ be ? GetValue(_lRef_).
+        1. Let _rRef_ be ? Evaluation of |ShiftExpression|.
+        1. Let _rVal_ be ? GetValue(_rRef_).
+        1. If _rVal_ is not an Object, throw a *TypeError* exception.
+        1. Return ? HasProperty(_rVal_, ? ToPropertyKey(_lVal_)).
       </emu-alg>
       <emu-grammar>RelationalExpression : PrivateIdentifier `in` ShiftExpression</emu-grammar>
       <emu-alg>
         1. Let _privateIdentifier_ be the StringValue of |PrivateIdentifier|.
-        1. Let _rref_ be ? Evaluation of |ShiftExpression|.
-        1. Let _rval_ be ? GetValue(_rref_).
-        1. If _rval_ is not an Object, throw a *TypeError* exception.
+        1. Let _rRef_ be ? Evaluation of |ShiftExpression|.
+        1. Let _rVal_ be ? GetValue(_rRef_).
+        1. If _rVal_ is not an Object, throw a *TypeError* exception.
         1. Let _privateEnv_ be the running execution context's PrivateEnvironment.
         1. Let _privateName_ be ResolvePrivateIdentifier(_privateEnv_, _privateIdentifier_).
-        1. If PrivateElementFind(_rval_, _privateName_) is not ~empty~, return *true*.
+        1. If PrivateElementFind(_rVal_, _privateName_) is not ~empty~, return *true*.
         1. Return *false*.
       </emu-alg>
     </emu-clause>
@@ -20298,36 +20298,36 @@
       <h1>Runtime Semantics: Evaluation</h1>
       <emu-grammar>EqualityExpression : EqualityExpression `==` RelationalExpression</emu-grammar>
       <emu-alg>
-        1. Let _lref_ be ? Evaluation of |EqualityExpression|.
-        1. Let _lval_ be ? GetValue(_lref_).
-        1. Let _rref_ be ? Evaluation of |RelationalExpression|.
-        1. Let _rval_ be ? GetValue(_rref_).
-        1. Return ? IsLooselyEqual(_rval_, _lval_).
+        1. Let _lRef_ be ? Evaluation of |EqualityExpression|.
+        1. Let _lVal_ be ? GetValue(_lRef_).
+        1. Let _rRef_ be ? Evaluation of |RelationalExpression|.
+        1. Let _rVal_ be ? GetValue(_rRef_).
+        1. Return ? IsLooselyEqual(_rVal_, _lVal_).
       </emu-alg>
       <emu-grammar>EqualityExpression : EqualityExpression `!=` RelationalExpression</emu-grammar>
       <emu-alg>
-        1. Let _lref_ be ? Evaluation of |EqualityExpression|.
-        1. Let _lval_ be ? GetValue(_lref_).
-        1. Let _rref_ be ? Evaluation of |RelationalExpression|.
-        1. Let _rval_ be ? GetValue(_rref_).
-        1. Let _r_ be ? IsLooselyEqual(_rval_, _lval_).
+        1. Let _lRef_ be ? Evaluation of |EqualityExpression|.
+        1. Let _lVal_ be ? GetValue(_lRef_).
+        1. Let _rRef_ be ? Evaluation of |RelationalExpression|.
+        1. Let _rVal_ be ? GetValue(_rRef_).
+        1. Let _r_ be ? IsLooselyEqual(_rVal_, _lVal_).
         1. If _r_ is *true*, return *false*. Otherwise, return *true*.
       </emu-alg>
       <emu-grammar>EqualityExpression : EqualityExpression `===` RelationalExpression</emu-grammar>
       <emu-alg>
-        1. Let _lref_ be ? Evaluation of |EqualityExpression|.
-        1. Let _lval_ be ? GetValue(_lref_).
-        1. Let _rref_ be ? Evaluation of |RelationalExpression|.
-        1. Let _rval_ be ? GetValue(_rref_).
-        1. Return IsStrictlyEqual(_rval_, _lval_).
+        1. Let _lRef_ be ? Evaluation of |EqualityExpression|.
+        1. Let _lVal_ be ? GetValue(_lRef_).
+        1. Let _rRef_ be ? Evaluation of |RelationalExpression|.
+        1. Let _rVal_ be ? GetValue(_rRef_).
+        1. Return IsStrictlyEqual(_rVal_, _lVal_).
       </emu-alg>
       <emu-grammar>EqualityExpression : EqualityExpression `!==` RelationalExpression</emu-grammar>
       <emu-alg>
-        1. Let _lref_ be ? Evaluation of |EqualityExpression|.
-        1. Let _lval_ be ? GetValue(_lref_).
-        1. Let _rref_ be ? Evaluation of |RelationalExpression|.
-        1. Let _rval_ be ? GetValue(_rref_).
-        1. Let _r_ be IsStrictlyEqual(_rval_, _lval_).
+        1. Let _lRef_ be ? Evaluation of |EqualityExpression|.
+        1. Let _lVal_ be ? GetValue(_lRef_).
+        1. Let _rRef_ be ? Evaluation of |RelationalExpression|.
+        1. Let _rVal_ be ? GetValue(_rRef_).
+        1. Let _r_ be IsStrictlyEqual(_rVal_, _lVal_).
         1. If _r_ is *true*, return *false*. Otherwise, return *true*.
       </emu-alg>
       <emu-note>
@@ -20437,29 +20437,29 @@
       <h1>Runtime Semantics: Evaluation</h1>
       <emu-grammar>LogicalANDExpression : LogicalANDExpression `&amp;&amp;` BitwiseORExpression</emu-grammar>
       <emu-alg>
-        1. Let _lref_ be ? Evaluation of |LogicalANDExpression|.
-        1. Let _lval_ be ? GetValue(_lref_).
-        1. If ToBoolean(_lval_) is *false*, return _lval_.
-        1. Let _rref_ be ? Evaluation of |BitwiseORExpression|.
-        1. Return ? GetValue(_rref_).
+        1. Let _lRef_ be ? Evaluation of |LogicalANDExpression|.
+        1. Let _lVal_ be ? GetValue(_lRef_).
+        1. If ToBoolean(_lVal_) is *false*, return _lVal_.
+        1. Let _rRef_ be ? Evaluation of |BitwiseORExpression|.
+        1. Return ? GetValue(_rRef_).
       </emu-alg>
       <emu-grammar>LogicalORExpression : LogicalORExpression `||` LogicalANDExpression</emu-grammar>
       <emu-alg>
-        1. Let _lref_ be ? Evaluation of |LogicalORExpression|.
-        1. Let _lval_ be ? GetValue(_lref_).
-        1. If ToBoolean(_lval_) is *true*, return _lval_.
-        1. Let _rref_ be ? Evaluation of |LogicalANDExpression|.
-        1. Return ? GetValue(_rref_).
+        1. Let _lRef_ be ? Evaluation of |LogicalORExpression|.
+        1. Let _lVal_ be ? GetValue(_lRef_).
+        1. If ToBoolean(_lVal_) is *true*, return _lVal_.
+        1. Let _rRef_ be ? Evaluation of |LogicalANDExpression|.
+        1. Return ? GetValue(_rRef_).
       </emu-alg>
       <emu-grammar>CoalesceExpression : CoalesceExpressionHead `??` BitwiseORExpression</emu-grammar>
       <emu-alg>
-        1. Let _lref_ be ? Evaluation of |CoalesceExpressionHead|.
-        1. Let _lval_ be ? GetValue(_lref_).
-        1. If _lval_ is either *undefined* or *null*, then
-          1. Let _rref_ be ? Evaluation of |BitwiseORExpression|.
-          1. Return ? GetValue(_rref_).
+        1. Let _lRef_ be ? Evaluation of |CoalesceExpressionHead|.
+        1. Let _lVal_ be ? GetValue(_lRef_).
+        1. If _lVal_ is either *undefined* or *null*, then
+          1. Let _rRef_ be ? Evaluation of |BitwiseORExpression|.
+          1. Return ? GetValue(_rRef_).
         1. Else,
-          1. Return _lval_.
+          1. Return _lVal_.
       </emu-alg>
     </emu-clause>
   </emu-clause>
@@ -20480,9 +20480,9 @@
       <h1>Runtime Semantics: Evaluation</h1>
       <emu-grammar>ConditionalExpression : ShortCircuitExpression `?` AssignmentExpression `:` AssignmentExpression</emu-grammar>
       <emu-alg>
-        1. Let _lref_ be ? Evaluation of |ShortCircuitExpression|.
-        1. Let _lval_ be ToBoolean(? GetValue(_lref_)).
-        1. If _lval_ is *true*, then
+        1. Let _lRef_ be ? Evaluation of |ShortCircuitExpression|.
+        1. Let _lVal_ be ToBoolean(? GetValue(_lRef_)).
+        1. If _lVal_ is *true*, then
           1. Let _trueRef_ be ? Evaluation of the first |AssignmentExpression|.
           1. Return ? GetValue(_trueRef_).
         1. Else,
@@ -20542,27 +20542,27 @@
       <emu-grammar>AssignmentExpression : LeftHandSideExpression `=` AssignmentExpression</emu-grammar>
       <emu-alg>
         1. If |LeftHandSideExpression| is neither an |ObjectLiteral| nor an |ArrayLiteral|, then
-          1. Let _lref_ be ? Evaluation of |LeftHandSideExpression|.
+          1. Let _lRef_ be ? Evaluation of |LeftHandSideExpression|.
           1. If IsAnonymousFunctionDefinition(|AssignmentExpression|) is *true* and IsIdentifierRef of |LeftHandSideExpression| is *true*, then
             1. Let _lhs_ be the StringValue of |LeftHandSideExpression|.
-            1. Let _rval_ be ? NamedEvaluation of |AssignmentExpression| with argument _lhs_.
+            1. Let _rVal_ be ? NamedEvaluation of |AssignmentExpression| with argument _lhs_.
           1. Else,
-            1. Let _rref_ be ? Evaluation of |AssignmentExpression|.
-            1. Let _rval_ be ? GetValue(_rref_).
-          1. [id="step-assignmentexpression-evaluation-simple-putvalue"] Perform ? PutValue(_lref_, _rval_).
-          1. Return _rval_.
+            1. Let _rRef_ be ? Evaluation of |AssignmentExpression|.
+            1. Let _rVal_ be ? GetValue(_rRef_).
+          1. [id="step-assignmentexpression-evaluation-simple-putvalue"] Perform ? PutValue(_lRef_, _rVal_).
+          1. Return _rVal_.
         1. Let _assignmentPattern_ be the |AssignmentPattern| that is covered by |LeftHandSideExpression|.
-        1. Let _rref_ be ? Evaluation of |AssignmentExpression|.
-        1. Let _rval_ be ? GetValue(_rref_).
-        1. Perform ? DestructuringAssignmentEvaluation of _assignmentPattern_ with argument _rval_.
-        1. Return _rval_.
+        1. Let _rRef_ be ? Evaluation of |AssignmentExpression|.
+        1. Let _rVal_ be ? GetValue(_rRef_).
+        1. Perform ? DestructuringAssignmentEvaluation of _assignmentPattern_ with argument _rVal_.
+        1. Return _rVal_.
       </emu-alg>
       <emu-grammar>AssignmentExpression : LeftHandSideExpression AssignmentOperator AssignmentExpression</emu-grammar>
       <emu-alg>
-        1. Let _lref_ be ? Evaluation of |LeftHandSideExpression|.
-        1. [id="step-assignmentexpression-evaluation-compound-getvalue"] Let _lval_ be ? GetValue(_lref_).
-        1. Let _rref_ be ? Evaluation of |AssignmentExpression|.
-        1. Let _rval_ be ? GetValue(_rref_).
+        1. Let _lRef_ be ? Evaluation of |LeftHandSideExpression|.
+        1. [id="step-assignmentexpression-evaluation-compound-getvalue"] Let _lVal_ be ? GetValue(_lRef_).
+        1. Let _rRef_ be ? Evaluation of |AssignmentExpression|.
+        1. Let _rVal_ be ? GetValue(_rRef_).
         1. Let _assignmentOpText_ be the source text matched by |AssignmentOperator|.
         1. Let _opText_ be the sequence of Unicode code points associated with _assignmentOpText_ in the following table:
           <figure>
@@ -20585,92 +20585,92 @@
               <tr><td> `|=`               </td><td> `|`            </td></tr>
             </table>
           </figure>
-        1. Let _r_ be ? ApplyStringOrNumericBinaryOperator(_lval_, _opText_, _rval_).
-        1. [id="step-assignmentexpression-evaluation-compound-putvalue"] Perform ? PutValue(_lref_, _r_).
+        1. Let _r_ be ? ApplyStringOrNumericBinaryOperator(_lVal_, _opText_, _rVal_).
+        1. [id="step-assignmentexpression-evaluation-compound-putvalue"] Perform ? PutValue(_lRef_, _r_).
         1. Return _r_.
       </emu-alg>
       <emu-grammar>AssignmentExpression : LeftHandSideExpression `&amp;&amp;=` AssignmentExpression</emu-grammar>
       <emu-alg>
-        1. Let _lref_ be ? Evaluation of |LeftHandSideExpression|.
-        1. [id="step-assignmentexpression-evaluation-lgcl-and-getvalue"] Let _lval_ be ? GetValue(_lref_).
-        1. If ToBoolean(_lval_) is *false*, return _lval_.
+        1. Let _lRef_ be ? Evaluation of |LeftHandSideExpression|.
+        1. [id="step-assignmentexpression-evaluation-lgcl-and-getvalue"] Let _lVal_ be ? GetValue(_lRef_).
+        1. If ToBoolean(_lVal_) is *false*, return _lVal_.
         1. If IsAnonymousFunctionDefinition(|AssignmentExpression|) is *true* and IsIdentifierRef of |LeftHandSideExpression| is *true*, then
           1. Let _lhs_ be the StringValue of |LeftHandSideExpression|.
-          1. Let _rval_ be ? NamedEvaluation of |AssignmentExpression| with argument _lhs_.
+          1. Let _rVal_ be ? NamedEvaluation of |AssignmentExpression| with argument _lhs_.
         1. Else,
-          1. Let _rref_ be ? Evaluation of |AssignmentExpression|.
-          1. Let _rval_ be ? GetValue(_rref_).
-        1. [id="step-assignmentexpression-evaluation-lgcl-and-putvalue"] Perform ? PutValue(_lref_, _rval_).
-        1. Return _rval_.
+          1. Let _rRef_ be ? Evaluation of |AssignmentExpression|.
+          1. Let _rVal_ be ? GetValue(_rRef_).
+        1. [id="step-assignmentexpression-evaluation-lgcl-and-putvalue"] Perform ? PutValue(_lRef_, _rVal_).
+        1. Return _rVal_.
       </emu-alg>
       <emu-grammar>AssignmentExpression : LeftHandSideExpression `||=` AssignmentExpression</emu-grammar>
       <emu-alg>
-        1. Let _lref_ be ? Evaluation of |LeftHandSideExpression|.
-        1. [id="step-assignmentexpression-evaluation-lgcl-or-getvalue"] Let _lval_ be ? GetValue(_lref_).
-        1. If ToBoolean(_lval_) is *true*, return _lval_.
+        1. Let _lRef_ be ? Evaluation of |LeftHandSideExpression|.
+        1. [id="step-assignmentexpression-evaluation-lgcl-or-getvalue"] Let _lVal_ be ? GetValue(_lRef_).
+        1. If ToBoolean(_lVal_) is *true*, return _lVal_.
         1. If IsAnonymousFunctionDefinition(|AssignmentExpression|) is *true* and IsIdentifierRef of |LeftHandSideExpression| is *true*, then
           1. Let _lhs_ be the StringValue of |LeftHandSideExpression|.
-          1. Let _rval_ be ? NamedEvaluation of |AssignmentExpression| with argument _lhs_.
+          1. Let _rVal_ be ? NamedEvaluation of |AssignmentExpression| with argument _lhs_.
         1. Else,
-          1. Let _rref_ be ? Evaluation of |AssignmentExpression|.
-          1. Let _rval_ be ? GetValue(_rref_).
-        1. [id="step-assignmentexpression-evaluation-lgcl-or-putvalue"] Perform ? PutValue(_lref_, _rval_).
-        1. Return _rval_.
+          1. Let _rRef_ be ? Evaluation of |AssignmentExpression|.
+          1. Let _rVal_ be ? GetValue(_rRef_).
+        1. [id="step-assignmentexpression-evaluation-lgcl-or-putvalue"] Perform ? PutValue(_lRef_, _rVal_).
+        1. Return _rVal_.
       </emu-alg>
       <emu-grammar>AssignmentExpression : LeftHandSideExpression `??=` AssignmentExpression</emu-grammar>
       <emu-alg>
-        1. Let _lref_ be ? Evaluation of |LeftHandSideExpression|.
-        1. [id="step-assignmentexpression-evaluation-lgcl-nullish-getvalue"] Let _lval_ be ? GetValue(_lref_).
-        1. If _lval_ is neither *undefined* nor *null*, return _lval_.
+        1. Let _lRef_ be ? Evaluation of |LeftHandSideExpression|.
+        1. [id="step-assignmentexpression-evaluation-lgcl-nullish-getvalue"] Let _lVal_ be ? GetValue(_lRef_).
+        1. If _lVal_ is neither *undefined* nor *null*, return _lVal_.
         1. If IsAnonymousFunctionDefinition(|AssignmentExpression|) is *true* and IsIdentifierRef of |LeftHandSideExpression| is *true*, then
           1. Let _lhs_ be the StringValue of |LeftHandSideExpression|.
-          1. Let _rval_ be ? NamedEvaluation of |AssignmentExpression| with argument _lhs_.
+          1. Let _rVal_ be ? NamedEvaluation of |AssignmentExpression| with argument _lhs_.
         1. Else,
-          1. Let _rref_ be ? Evaluation of |AssignmentExpression|.
-          1. Let _rval_ be ? GetValue(_rref_).
-        1. [id="step-assignmentexpression-evaluation-lgcl-nullish-putvalue"] Perform ? PutValue(_lref_, _rval_).
-        1. Return _rval_.
+          1. Let _rRef_ be ? Evaluation of |AssignmentExpression|.
+          1. Let _rVal_ be ? GetValue(_rRef_).
+        1. [id="step-assignmentexpression-evaluation-lgcl-nullish-putvalue"] Perform ? PutValue(_lRef_, _rVal_).
+        1. Return _rVal_.
       </emu-alg>
       <emu-note>
-        <p>When this expression occurs within strict mode code, it is a runtime error if _lref_ in step <emu-xref href="#step-assignmentexpression-evaluation-simple-putvalue"></emu-xref>, <emu-xref href="#step-assignmentexpression-evaluation-compound-getvalue"></emu-xref>, <emu-xref href="#step-assignmentexpression-evaluation-lgcl-and-getvalue"></emu-xref>, <emu-xref href="#step-assignmentexpression-evaluation-lgcl-or-getvalue"></emu-xref>, <emu-xref href="#step-assignmentexpression-evaluation-lgcl-nullish-getvalue"></emu-xref> is an unresolvable reference. If it is, a *ReferenceError* exception is thrown. Additionally, it is a runtime error if the _lref_ in step <emu-xref href="#step-assignmentexpression-evaluation-compound-putvalue"></emu-xref>, <emu-xref href="#step-assignmentexpression-evaluation-lgcl-and-putvalue"></emu-xref>, <emu-xref href="#step-assignmentexpression-evaluation-lgcl-or-putvalue"></emu-xref>, <emu-xref href="#step-assignmentexpression-evaluation-lgcl-nullish-putvalue"></emu-xref> is a reference to a data property with the attribute value { [[Writable]]: *false* }, to an accessor property with the attribute value { [[Set]]: *undefined* }, or to a non-existent property of an object for which the IsExtensible predicate returns the value *false*. In these cases a *TypeError* exception is thrown.</p>
+        <p>When this expression occurs within strict mode code, it is a runtime error if _lRef_ in step <emu-xref href="#step-assignmentexpression-evaluation-simple-putvalue"></emu-xref>, <emu-xref href="#step-assignmentexpression-evaluation-compound-getvalue"></emu-xref>, <emu-xref href="#step-assignmentexpression-evaluation-lgcl-and-getvalue"></emu-xref>, <emu-xref href="#step-assignmentexpression-evaluation-lgcl-or-getvalue"></emu-xref>, <emu-xref href="#step-assignmentexpression-evaluation-lgcl-nullish-getvalue"></emu-xref> is an unresolvable reference. If it is, a *ReferenceError* exception is thrown. Additionally, it is a runtime error if the _lRef_ in step <emu-xref href="#step-assignmentexpression-evaluation-compound-putvalue"></emu-xref>, <emu-xref href="#step-assignmentexpression-evaluation-lgcl-and-putvalue"></emu-xref>, <emu-xref href="#step-assignmentexpression-evaluation-lgcl-or-putvalue"></emu-xref>, <emu-xref href="#step-assignmentexpression-evaluation-lgcl-nullish-putvalue"></emu-xref> is a reference to a data property with the attribute value { [[Writable]]: *false* }, to an accessor property with the attribute value { [[Set]]: *undefined* }, or to a non-existent property of an object for which the IsExtensible predicate returns the value *false*. In these cases a *TypeError* exception is thrown.</p>
       </emu-note>
     </emu-clause>
 
     <emu-clause id="sec-applystringornumericbinaryoperator" type="abstract operation">
       <h1>
         ApplyStringOrNumericBinaryOperator (
-          _lval_: an ECMAScript language value,
+          _lVal_: an ECMAScript language value,
           _opText_: `**`, `*`, `/`, `%`, `+`, `-`, `&lt;&lt;`, `&gt;&gt;`, `&gt;&gt;&gt;`, `&amp;`, `^`, or `|`,
-          _rval_: an ECMAScript language value,
+          _rVal_: an ECMAScript language value,
         ): either a normal completion containing either a String, a BigInt, or a Number, or a throw completion
       </h1>
       <dl class="header">
       </dl>
       <emu-alg>
         1. If _opText_ is `+`, then
-          1. [id="step-binary-op-toprimitive-lval"] Let _lprim_ be ? ToPrimitive(_lval_).
-          1. [id="step-binary-op-toprimitive-rval"] Let _rprim_ be ? ToPrimitive(_rval_).
-          1. [id="step-binary-op-string-check"] If _lprim_ is a String or _rprim_ is a String, then
-            1. Let _lstr_ be ? ToString(_lprim_).
-            1. Let _rstr_ be ? ToString(_rprim_).
-            1. Return the string-concatenation of _lstr_ and _rstr_.
-          1. Set _lval_ to _lprim_.
-          1. Set _rval_ to _rprim_.
+          1. [id="step-binary-op-toprimitive-lval"] Let _lPrim_ be ? ToPrimitive(_lVal_).
+          1. [id="step-binary-op-toprimitive-rval"] Let _rPrim_ be ? ToPrimitive(_rVal_).
+          1. [id="step-binary-op-string-check"] If _lPrim_ is a String or _rPrim_ is a String, then
+            1. Let _lStr_ be ? ToString(_lPrim_).
+            1. Let _rStr_ be ? ToString(_rPrim_).
+            1. Return the string-concatenation of _lStr_ and _rStr_.
+          1. Set _lVal_ to _lPrim_.
+          1. Set _rVal_ to _rPrim_.
         1. NOTE: At this point, it must be a numeric operation.
-        1. Let _lnum_ be ? ToNumeric(_lval_).
-        1. Let _rnum_ be ? ToNumeric(_rval_).
-        1. If Type(_lnum_) is not Type(_rnum_), throw a *TypeError* exception.
-        1. If _lnum_ is a BigInt, then
-          1. If _opText_ is `**`, return ? BigInt::exponentiate(_lnum_, _rnum_).
-          1. If _opText_ is `/`, return ? BigInt::divide(_lnum_, _rnum_).
-          1. If _opText_ is `%`, return ? BigInt::remainder(_lnum_, _rnum_).
-          1. If _opText_ is `>>>`, return ? BigInt::unsignedRightShift(_lnum_, _rnum_).
-        1. Let _operation_ be the abstract operation associated with _opText_ and Type(_lnum_) in the following table:
+        1. Let _lNum_ be ? ToNumeric(_lVal_).
+        1. Let _rNum_ be ? ToNumeric(_rVal_).
+        1. If Type(_lNum_) is not Type(_rNum_), throw a *TypeError* exception.
+        1. If _lNum_ is a BigInt, then
+          1. If _opText_ is `**`, return ? BigInt::exponentiate(_lNum_, _rNum_).
+          1. If _opText_ is `/`, return ? BigInt::divide(_lNum_, _rNum_).
+          1. If _opText_ is `%`, return ? BigInt::remainder(_lNum_, _rNum_).
+          1. If _opText_ is `>>>`, return ? BigInt::unsignedRightShift(_lNum_, _rNum_).
+        1. Let _operation_ be the abstract operation associated with _opText_ and Type(_lNum_) in the following table:
           <figure>
             <!-- emu-format ignore -->
             <table class="lightweight-table">
               <thead>
-                <tr><th> _opText_       </th><th> Type(_lnum_) </th><th> _operation_                </th></tr>
+                <tr><th> _opText_       </th><th> Type(_lNum_) </th><th> _operation_                </th></tr>
               </thead>
               <tr><td> `**`           </td><td> Number       </td><td> Number::exponentiate       </td></tr>
               <tr><td> `*`            </td><td> Number       </td><td> Number::multiply           </td></tr>
@@ -20694,7 +20694,7 @@
               <tr><td> `|`            </td><td> BigInt       </td><td> BigInt::bitwiseOR          </td></tr>
             </table>
           </figure>
-        1. Return _operation_(_lnum_, _rnum_).
+        1. Return _operation_(_lNum_, _rNum_).
       </emu-alg>
       <emu-note>
         <p>No hint is provided in the calls to ToPrimitive in steps <emu-xref href="#step-binary-op-toprimitive-lval"></emu-xref> and <emu-xref href="#step-binary-op-toprimitive-rval"></emu-xref>. All standard objects except Dates handle the absence of a hint as if ~number~ were given; Dates handle the absence of a hint as if ~string~ were given. Exotic objects may handle the absence of a hint in some other manner.</p>
@@ -20715,11 +20715,11 @@
       <dl class="header">
       </dl>
       <emu-alg>
-        1. Let _lref_ be ? Evaluation of _leftOperand_.
-        1. Let _lval_ be ? GetValue(_lref_).
-        1. Let _rref_ be ? Evaluation of _rightOperand_.
-        1. Let _rval_ be ? GetValue(_rref_).
-        1. Return ? ApplyStringOrNumericBinaryOperator(_lval_, _opText_, _rval_).
+        1. Let _lRef_ be ? Evaluation of _leftOperand_.
+        1. Let _lVal_ be ? GetValue(_lRef_).
+        1. Let _rRef_ be ? Evaluation of _rightOperand_.
+        1. Let _rVal_ be ? GetValue(_rRef_).
+        1. Return ? ApplyStringOrNumericBinaryOperator(_lVal_, _opText_, _rVal_).
       </emu-alg>
     </emu-clause>
 
@@ -20905,7 +20905,7 @@
         <emu-grammar>AssignmentProperty : IdentifierReference Initializer?</emu-grammar>
         <emu-alg>
           1. Let _P_ be the StringValue of |IdentifierReference|.
-          1. Let _lref_ be ? ResolveBinding(_P_).
+          1. Let _lRef_ be ? ResolveBinding(_P_).
           1. Let _v_ be ? GetV(_value_, _P_).
           1. If |Initializer| is present and _v_ is *undefined*, then
             1. If IsAnonymousFunctionDefinition(|Initializer|) is *true*, then
@@ -20913,7 +20913,7 @@
             1. Else,
               1. Let _defaultValue_ be ? Evaluation of |Initializer|.
               1. Set _v_ to ? GetValue(_defaultValue_).
-          1. Perform ? PutValue(_lref_, _v_).
+          1. Perform ? PutValue(_lRef_, _v_).
           1. Return « _P_ ».
         </emu-alg>
 
@@ -20936,10 +20936,10 @@
         </dl>
         <emu-grammar>AssignmentRestProperty : `...` DestructuringAssignmentTarget</emu-grammar>
         <emu-alg>
-          1. Let _lref_ be ? Evaluation of |DestructuringAssignmentTarget|.
+          1. Let _lRef_ be ? Evaluation of |DestructuringAssignmentTarget|.
           1. Let _restObj_ be OrdinaryObjectCreate(%Object.prototype%).
           1. Perform ? CopyDataProperties(_restObj_, _value_, _excludedNames_).
-          1. Return ? PutValue(_lref_, _restObj_).
+          1. Return ? PutValue(_lRef_, _restObj_).
         </emu-alg>
       </emu-clause>
 
@@ -20985,7 +20985,7 @@
         <emu-grammar>AssignmentElement : DestructuringAssignmentTarget Initializer?</emu-grammar>
         <emu-alg>
           1. If |DestructuringAssignmentTarget| is neither an |ObjectLiteral| nor an |ArrayLiteral|, then
-            1. Let _lref_ be ? Evaluation of |DestructuringAssignmentTarget|.
+            1. Let _lRef_ be ? Evaluation of |DestructuringAssignmentTarget|.
           1. Let _value_ be *undefined*.
           1. If _iteratorRecord_.[[Done]] is *false*, then
             1. Let _next_ be ? IteratorStepValue(_iteratorRecord_).
@@ -21003,7 +21003,7 @@
           1. If |DestructuringAssignmentTarget| is either an |ObjectLiteral| or an |ArrayLiteral|, then
             1. Let _nestedAssignmentPattern_ be the |AssignmentPattern| that is covered by |DestructuringAssignmentTarget|.
             1. Return ? DestructuringAssignmentEvaluation of _nestedAssignmentPattern_ with argument _v_.
-          1. Return ? PutValue(_lref_, _v_).
+          1. Return ? PutValue(_lRef_, _v_).
         </emu-alg>
         <emu-note>
           <p>Left to right evaluation order is maintained by evaluating a |DestructuringAssignmentTarget| that is not a destructuring pattern prior to accessing the iterator or evaluating the |Initializer|.</p>
@@ -21011,7 +21011,7 @@
         <emu-grammar>AssignmentRestElement : `...` DestructuringAssignmentTarget</emu-grammar>
         <emu-alg>
           1. If |DestructuringAssignmentTarget| is neither an |ObjectLiteral| nor an |ArrayLiteral|, then
-            1. Let _lref_ be ? Evaluation of |DestructuringAssignmentTarget|.
+            1. Let _lRef_ be ? Evaluation of |DestructuringAssignmentTarget|.
           1. Let _A_ be ! ArrayCreate(0).
           1. Let _n_ be 0.
           1. Repeat, while _iteratorRecord_.[[Done]] is *false*,
@@ -21020,7 +21020,7 @@
               1. Perform ! CreateDataPropertyOrThrow(_A_, ! ToString(𝔽(_n_)), _next_).
               1. Set _n_ to _n_ + 1.
           1. If |DestructuringAssignmentTarget| is neither an |ObjectLiteral| nor an |ArrayLiteral|, then
-            1. Return ? PutValue(_lref_, _A_).
+            1. Return ? PutValue(_lRef_, _A_).
           1. Let _nestedAssignmentPattern_ be the |AssignmentPattern| that is covered by |DestructuringAssignmentTarget|.
           1. Return ? DestructuringAssignmentEvaluation of _nestedAssignmentPattern_ with argument _A_.
         </emu-alg>
@@ -21038,7 +21038,7 @@
         <emu-grammar>AssignmentElement : DestructuringAssignmentTarget Initializer?</emu-grammar>
         <emu-alg>
           1. If |DestructuringAssignmentTarget| is neither an |ObjectLiteral| nor an |ArrayLiteral|, then
-            1. Let _lref_ be ? Evaluation of |DestructuringAssignmentTarget|.
+            1. Let _lRef_ be ? Evaluation of |DestructuringAssignmentTarget|.
           1. Let _v_ be ? GetV(_value_, _propertyName_).
           1. If |Initializer| is present and _v_ is *undefined*, then
             1. If IsAnonymousFunctionDefinition(|Initializer|) is *true* and IsIdentifierRef of |DestructuringAssignmentTarget| is *true*, then
@@ -21052,7 +21052,7 @@
           1. If |DestructuringAssignmentTarget| is either an |ObjectLiteral| or an |ArrayLiteral|, then
             1. Let _assignmentPattern_ be the |AssignmentPattern| that is covered by |DestructuringAssignmentTarget|.
             1. Return ? DestructuringAssignmentEvaluation of _assignmentPattern_ with argument _rhsValue_.
-          1. Return ? PutValue(_lref_, _rhsValue_).
+          1. Return ? PutValue(_lRef_, _rhsValue_).
         </emu-alg>
       </emu-clause>
     </emu-clause>
@@ -21071,10 +21071,10 @@
       <h1>Runtime Semantics: Evaluation</h1>
       <emu-grammar>Expression : Expression `,` AssignmentExpression</emu-grammar>
       <emu-alg>
-        1. Let _lref_ be ? Evaluation of |Expression|.
-        1. Perform ? GetValue(_lref_).
-        1. Let _rref_ be ? Evaluation of |AssignmentExpression|.
-        1. Return ? GetValue(_rref_).
+        1. Let _lRef_ be ? Evaluation of |Expression|.
+        1. Perform ? GetValue(_lRef_).
+        1. Let _rRef_ be ? Evaluation of |AssignmentExpression|.
+        1. Return ? GetValue(_rRef_).
       </emu-alg>
       <emu-note>
         <p>GetValue must be called even though its value is not used because it may have observable side-effects.</p>
@@ -21397,8 +21397,8 @@
         <emu-grammar>VariableDeclaration : BindingPattern Initializer</emu-grammar>
         <emu-alg>
           1. Let _rhs_ be ? Evaluation of |Initializer|.
-          1. Let _rval_ be ? GetValue(_rhs_).
-          1. Return ? BindingInitialization of |BindingPattern| with arguments _rval_ and *undefined*.
+          1. Let _rVal_ be ? GetValue(_rhs_).
+          1. Return ? BindingInitialization of |BindingPattern| with arguments _rVal_ and *undefined*.
         </emu-alg>
       </emu-clause>
     </emu-clause>
