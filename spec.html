@@ -30370,7 +30370,7 @@
               1. Perform ! DefinePropertyOrThrow(_F_, *"prototype"*, PropertyDescriptor { [[Value]]: _prototype_, [[Writable]]: *true*, [[Enumerable]]: *false*, [[Configurable]]: *false* }).
             1. Else if _kind_ is ~normal~, then
               1. Perform MakeConstructor(_F_).
-            1. NOTE: Functions whose _kind_ is ~async~ are not constructible and do not have a [[Construct]] internal method or a *"prototype"* property.
+            1. NOTE: Functions whose _kind_ is ~async~ are not constructable and do not have a [[Construct]] internal method or a *"prototype"* property.
             1. Return _F_.
           </emu-alg>
           <emu-note>
@@ -48800,7 +48800,7 @@ THH:mm:ss.sss
     <emu-clause id="sec-async-function-instances">
       <h1>AsyncFunction Instances</h1>
 
-      <p>Every AsyncFunction instance is an ECMAScript function object and has the internal slots listed in <emu-xref href="#table-internal-slots-of-ecmascript-function-objects"></emu-xref>. The value of the [[IsClassConstructor]] internal slot for all such instances is *false*. AsyncFunction instances are not constructors and do not have a [[Construct]] internal method. AsyncFunction instances do not have a prototype property as they are not constructible.</p>
+      <p>Every AsyncFunction instance is an ECMAScript function object and has the internal slots listed in <emu-xref href="#table-internal-slots-of-ecmascript-function-objects"></emu-xref>. The value of the [[IsClassConstructor]] internal slot for all such instances is *false*. AsyncFunction instances are not constructors and do not have a [[Construct]] internal method. AsyncFunction instances do not have a prototype property as they are not constructable.</p>
       <p>Each AsyncFunction instance has the following own properties:</p>
 
       <emu-clause id="sec-async-function-instances-length">
