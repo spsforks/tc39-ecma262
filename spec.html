@@ -11518,14 +11518,14 @@
       <emu-clause id="sec-newprivateenvironment" type="abstract operation">
         <h1>
           NewPrivateEnvironment (
-            _outerPrivEnv_: a PrivateEnvironment Record or *null*,
+            _outerPrivateEnv_: a PrivateEnvironment Record or *null*,
           ): a PrivateEnvironment Record
         </h1>
         <dl class="header">
         </dl>
         <emu-alg>
           1. Let _names_ be a new empty List.
-          1. Return the PrivateEnvironment Record { [[OuterPrivateEnvironment]]: _outerPrivEnv_, [[Names]]: _names_ }.
+          1. Return the PrivateEnvironment Record { [[OuterPrivateEnvironment]]: _outerPrivateEnv_, [[Names]]: _names_ }.
         </emu-alg>
       </emu-clause>
 
@@ -11543,9 +11543,9 @@
           1. For each Private Name _pn_ of _names_, do
             1. If _pn_.[[Description]] is _identifier_, then
               1. Return _pn_.
-          1. Let _outerPrivEnv_ be _privateEnv_.[[OuterPrivateEnvironment]].
-          1. Assert: _outerPrivEnv_ is not *null*.
-          1. Return ResolvePrivateIdentifier(_outerPrivEnv_, _identifier_).
+          1. Let _outerPrivateEnv_ be _privateEnv_.[[OuterPrivateEnvironment]].
+          1. Assert: _outerPrivateEnv_ is not *null*.
+          1. Return ResolvePrivateIdentifier(_outerPrivateEnv_, _identifier_).
         </emu-alg>
       </emu-clause>
     </emu-clause>
