@@ -4394,9 +4394,9 @@
         <dl class="header">
         </dl>
         <emu-alg>
-          1. Let _privEnv_ be the running execution context's PrivateEnvironment.
-          1. Assert: _privEnv_ is not *null*.
-          1. Let _privateName_ be ResolvePrivateIdentifier(_privEnv_, _privateIdentifier_).
+          1. Let _privateEnv_ be the running execution context's PrivateEnvironment.
+          1. Assert: _privateEnv_ is not *null*.
+          1. Let _privateName_ be ResolvePrivateIdentifier(_privateEnv_, _privateIdentifier_).
           1. Return the Reference Record { [[Base]]: _baseValue_, [[ReferencedName]]: _privateName_, [[Strict]]: *true*, [[ThisValue]]: ~empty~ }.
         </emu-alg>
       </emu-clause>
@@ -11532,18 +11532,18 @@
       <emu-clause id="sec-resolve-private-identifier" type="abstract operation">
         <h1>
           ResolvePrivateIdentifier (
-            _privEnv_: a PrivateEnvironment Record,
+            _privateEnv_: a PrivateEnvironment Record,
             _identifier_: a String,
           ): a Private Name
         </h1>
         <dl class="header">
         </dl>
         <emu-alg>
-          1. Let _names_ be _privEnv_.[[Names]].
+          1. Let _names_ be _privateEnv_.[[Names]].
           1. For each Private Name _pn_ of _names_, do
             1. If _pn_.[[Description]] is _identifier_, then
               1. Return _pn_.
-          1. Let _outerPrivEnv_ be _privEnv_.[[OuterPrivateEnvironment]].
+          1. Let _outerPrivEnv_ be _privateEnv_.[[OuterPrivateEnvironment]].
           1. Assert: _outerPrivEnv_ is not *null*.
           1. Return ResolvePrivateIdentifier(_outerPrivEnv_, _identifier_).
         </emu-alg>
