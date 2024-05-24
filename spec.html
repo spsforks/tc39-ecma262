@@ -17851,7 +17851,7 @@
 
           AsyncArrowFunction[In, Yield, Await] :
             `async` [no LineTerminator here] AsyncArrowBindingIdentifier[?Yield] [no LineTerminator here] `=>` AsyncConciseBody[?In]
-            CoverCallExpressionAndAsyncArrowHead[?Yield, ?Await] [no LineTerminator here] `=>` AsyncConciseBody[?In] #callcover
+            CoverCallExpressionAndAsyncArrowHead[?Yield, ?Await] [no LineTerminator here] `=>` AsyncConciseBody[?In] #callCover
 
           AsyncArrowHead :
             `async` [no LineTerminator here] ArrowFormalParameters[~Yield, +Await]
@@ -18209,7 +18209,7 @@
         AsyncGeneratorExpression
         RegularExpressionLiteral
         TemplateLiteral[?Yield, ?Await, ~Tagged]
-        CoverParenthesizedExpressionAndArrowParameterList[?Yield, ?Await] #parencover
+        CoverParenthesizedExpressionAndArrowParameterList[?Yield, ?Await] #parenCover
 
       CoverParenthesizedExpressionAndArrowParameterList[Yield, Await] :
         `(` Expression[+In, ?Yield, ?Await] `)`
@@ -18998,7 +18998,7 @@
         `new` NewExpression[?Yield, ?Await]
 
       CallExpression[Yield, Await] :
-        CoverCallExpressionAndAsyncArrowHead[?Yield, ?Await] #callcover
+        CoverCallExpressionAndAsyncArrowHead[?Yield, ?Await] #callCover
         SuperCall[?Yield, ?Await]
         ImportCall[?Yield, ?Await]
         CallExpression[?Yield, ?Await] Arguments[?Yield, ?Await]
@@ -23549,7 +23549,7 @@
 
       ArrowParameters[Yield, Await] :
         BindingIdentifier[?Yield, ?Await]
-        CoverParenthesizedExpressionAndArrowParameterList[?Yield, ?Await] #parencover
+        CoverParenthesizedExpressionAndArrowParameterList[?Yield, ?Await] #parenCover
 
       ConciseBody[In] :
         [lookahead != `{`] ExpressionBody[?In, ~Await]
@@ -25254,7 +25254,7 @@
     <emu-grammar type="definition">
       AsyncArrowFunction[In, Yield, Await] :
         `async` [no LineTerminator here] AsyncArrowBindingIdentifier[?Yield] [no LineTerminator here] `=>` AsyncConciseBody[?In]
-        CoverCallExpressionAndAsyncArrowHead[?Yield, ?Await] [no LineTerminator here] `=>` AsyncConciseBody[?In] #callcover
+        CoverCallExpressionAndAsyncArrowHead[?Yield, ?Await] [no LineTerminator here] `=>` AsyncConciseBody[?In] #callCover
 
       AsyncConciseBody[In] :
         [lookahead != `{`] ExpressionBody[?In, +Await]
@@ -49911,7 +49911,7 @@ THH:mm:ss.sss
     <emu-prodref name="CoverParenthesizedExpressionAndArrowParameterList"></emu-prodref>
     <p>
       When processing an instance of the production<br>
-      <emu-prodref name="PrimaryExpression" a="parencover"></emu-prodref><br>
+      <emu-prodref name="PrimaryExpression" a="parenCover"></emu-prodref><br>
       the interpretation of |CoverParenthesizedExpressionAndArrowParameterList| is refined using the following grammar:
     </p>
     <emu-prodref name="ParenthesizedExpression"></emu-prodref>
@@ -49942,7 +49942,7 @@ THH:mm:ss.sss
     <emu-prodref name="CallExpression"></emu-prodref>
     <p>
       When processing an instance of the production<br>
-      <emu-prodref name="CallExpression" a="callcover"></emu-prodref><br>
+      <emu-prodref name="CallExpression" a="callCover"></emu-prodref><br>
       the interpretation of |CoverCallExpressionAndAsyncArrowHead| is refined using the following grammar:
     </p>
     <emu-prodref name="CallMemberExpression"></emu-prodref>
@@ -50068,7 +50068,7 @@ THH:mm:ss.sss
     <emu-prodref name="ExpressionBody"></emu-prodref>
     <p>
       When processing an instance of the production<br>
-      <emu-prodref name="ArrowParameters" a="parencover"></emu-prodref><br>
+      <emu-prodref name="ArrowParameters" a="parenCover"></emu-prodref><br>
       the interpretation of |CoverParenthesizedExpressionAndArrowParameterList| is refined using the following grammar:
     </p>
     <emu-prodref name="ArrowFormalParameters"></emu-prodref>
@@ -50079,7 +50079,7 @@ THH:mm:ss.sss
     <emu-prodref name="CoverCallExpressionAndAsyncArrowHead"></emu-prodref>
     <p>
       When processing an instance of the production<br>
-      <emu-prodref name="AsyncArrowFunction" a="callcover"></emu-prodref><br>
+      <emu-prodref name="AsyncArrowFunction" a="callCover"></emu-prodref><br>
       the interpretation of |CoverCallExpressionAndAsyncArrowHead| is refined using the following grammar:
     </p>
     <emu-prodref name="AsyncArrowHead"></emu-prodref>
@@ -51038,10 +51038,10 @@ THH:mm:ss.sss
                   1. Perform ! _varEnv_.InitializeBinding(_F_, *undefined*).
                   1. Append _F_ to _instantiatedVarNames_.
                 1. When the |FunctionDeclaration| _f_ is evaluated, perform the following steps in place of the |FunctionDeclaration| Evaluation algorithm provided in <emu-xref href="#sec-function-definitions-runtime-semantics-evaluation"></emu-xref>:
-                  1. Let _fenv_ be the running execution context's VariableEnvironment.
-                  1. Let _benv_ be the running execution context's LexicalEnvironment.
-                  1. Let _fobj_ be ! _benv_.GetBindingValue(_F_, *false*).
-                  1. Perform ! _fenv_.SetMutableBinding(_F_, _fobj_, *false*).
+                  1. Let _fEnv_ be the running execution context's VariableEnvironment.
+                  1. Let _bEnv_ be the running execution context's LexicalEnvironment.
+                  1. Let _fobj_ be ! _bEnv_.GetBindingValue(_F_, *false*).
+                  1. Perform ! _fEnv_.SetMutableBinding(_F_, _fobj_, *false*).
                   1. Return ~unused~.
         </emu-alg>
       </emu-annex>
@@ -51065,10 +51065,10 @@ THH:mm:ss.sss
                         1. Perform ? _env_.CreateGlobalVarBinding(_F_, *false*).
                         1. Append _F_ to _declaredFunctionOrVarNames_.
                       1. When the |FunctionDeclaration| _f_ is evaluated, perform the following steps in place of the |FunctionDeclaration| Evaluation algorithm provided in <emu-xref href="#sec-function-definitions-runtime-semantics-evaluation"></emu-xref>:
-                        1. Let _genv_ be the running execution context's VariableEnvironment.
-                        1. Let _benv_ be the running execution context's LexicalEnvironment.
-                        1. Let _fobj_ be ! _benv_.GetBindingValue(_F_, *false*).
-                        1. Perform ? <emu-meta effects="user-code">_genv_.SetMutableBinding</emu-meta>(_F_, _fobj_, *false*).
+                        1. Let _gEnv_ be the running execution context's VariableEnvironment.
+                        1. Let _bEnv_ be the running execution context's LexicalEnvironment.
+                        1. Let _fobj_ be ! _bEnv_.GetBindingValue(_F_, *false*).
+                        1. Perform ? <emu-meta effects="user-code">_gEnv_.SetMutableBinding</emu-meta>(_F_, _fobj_, *false*).
                         1. Return ~unused~.
         </emu-alg>
       </emu-annex>
@@ -51108,10 +51108,10 @@ THH:mm:ss.sss
                         1. Perform ! _varEnv_.InitializeBinding(_F_, *undefined*).
                     1. Append _F_ to _declaredFunctionOrVarNames_.
                   1. When the |FunctionDeclaration| _f_ is evaluated, perform the following steps in place of the |FunctionDeclaration| Evaluation algorithm provided in <emu-xref href="#sec-function-definitions-runtime-semantics-evaluation"></emu-xref>:
-                    1. Let _genv_ be the running execution context's VariableEnvironment.
-                    1. Let _benv_ be the running execution context's LexicalEnvironment.
-                    1. Let _fobj_ be ! _benv_.GetBindingValue(_F_, *false*).
-                    1. Perform ? <emu-meta effects="user-code">_genv_.SetMutableBinding</emu-meta>(_F_, _fobj_, *false*).
+                    1. Let _gEnv_ be the running execution context's VariableEnvironment.
+                    1. Let _bEnv_ be the running execution context's LexicalEnvironment.
+                    1. Let _fobj_ be ! _bEnv_.GetBindingValue(_F_, *false*).
+                    1. Perform ? <emu-meta effects="user-code">_gEnv_.SetMutableBinding</emu-meta>(_F_, _fobj_, *false*).
                     1. Return ~unused~.
         </emu-alg>
       </emu-annex>
