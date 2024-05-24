@@ -12501,7 +12501,7 @@
   <emu-clause id="sec-ordinary-object-internal-methods-and-internal-slots">
     <h1>Ordinary Object Internal Methods and Internal Slots</h1>
     <p>All ordinary objects have an internal slot called [[Prototype]]. The value of this internal slot is either *null* or an object and is used for implementing inheritance. Assume a property named _P_ is missing from an ordinary object _O_ but exists on its [[Prototype]] object. If _P_ refers to a data property on the [[Prototype]] object, _O_ inherits it for get access, making it behave as if _P_ was a property of _O_. If _P_ refers to a writable data property on the [[Prototype]] object, set access of _P_ on _O_ creates a new data property named _P_ on _O_. If _P_ refers to a non-writable data property on the [[Prototype]] object, set access of _P_ on _O_ fails. If _P_ refers to an accessor property on the [[Prototype]] object, the accessor is inherited by _O_ for both get access and set access.</p>
-    <p>Every ordinary object has a Boolean-valued [[Extensible]] internal slot which is used to fulfill the extensibility-related internal method invariants specified in <emu-xref href="#sec-invariants-of-the-essential-internal-methods"></emu-xref>. Namely, once the value of an object's [[Extensible]] internal slot has been set to *false*, it is no longer possible to add properties to the object, to modify the value of the object's [[Prototype]] internal slot, or to subsequently change the value of [[Extensible]] to *true*.</p>
+    <p>Every ordinary object has a Boolean-valued [[Extensible]] internal slot which is used to fulfil the extensibility-related internal method invariants specified in <emu-xref href="#sec-invariants-of-the-essential-internal-methods"></emu-xref>. Namely, once the value of an object's [[Extensible]] internal slot has been set to *false*, it is no longer possible to add properties to the object, to modify the value of the object's [[Prototype]] internal slot, or to subsequently change the value of [[Extensible]] to *true*.</p>
     <p>In the following algorithm descriptions, assume _O_ is an ordinary object, _P_ is a property key value, _V_ is any ECMAScript language value, and _Desc_ is a Property Descriptor record.</p>
     <p>Each ordinary object internal method delegates to a similarly-named abstract operation. If such an abstract operation depends on another internal method, then the internal method is invoked on _O_ rather than calling the similarly-named abstract operation directly. These semantics ensure that exotic objects have their overridden internal methods invoked when ordinary object internal methods are applied to them.</p>
 
@@ -46344,9 +46344,9 @@ THH:mm:ss.sss
               <td>*"next"*</td>
               <td>a function that returns a promise for an <i>IteratorResult</i> object</td>
               <td>
-                <p>The returned promise, when fulfilled, must fulfill with an object that conforms to the <i>IteratorResult</i> interface. If a previous call to the `next` method of an <i>AsyncIterator</i> has returned a promise for an <i>IteratorResult</i> object whose *"done"* property is *true*, then all subsequent calls to the `next` method of that object should also return a promise for an <i>IteratorResult</i> object whose *"done"* property is *true*. However, this requirement is not enforced.</p>
+                <p>The returned promise, when fulfilled, must fulfil with an object that conforms to the <i>IteratorResult</i> interface. If a previous call to the `next` method of an <i>AsyncIterator</i> has returned a promise for an <i>IteratorResult</i> object whose *"done"* property is *true*, then all subsequent calls to the `next` method of that object should also return a promise for an <i>IteratorResult</i> object whose *"done"* property is *true*. However, this requirement is not enforced.</p>
 
-                <p>Additionally, the <i>IteratorResult</i> object that serves as a fulfillment value should have a *"value"* property whose value is not a promise (or "thenable"). However, this requirement is also not enforced.</p>
+                <p>Additionally, the <i>IteratorResult</i> object that serves as a fulfilment value should have a *"value"* property whose value is not a promise (or "thenable"). However, this requirement is also not enforced.</p>
               </td>
             </tr>
           </table>
@@ -46367,18 +46367,18 @@ THH:mm:ss.sss
               <td>*"return"*</td>
               <td>a function that returns a promise for an <i>IteratorResult</i> object</td>
               <td>
-                <p>The returned promise, when fulfilled, must fulfill with an object that conforms to the <i>IteratorResult</i> interface. Invoking this method notifies the <i>AsyncIterator</i> object that the caller does not intend to make any more `next` method calls to the <i>AsyncIterator</i>. The returned promise will fulfill with an <i>IteratorResult</i> object which will typically have a *"done"* property whose value is *true*, and a *"value"* property with the value passed as the argument of the `return` method. However, this requirement is not enforced.</p>
+                <p>The returned promise, when fulfilled, must fulfil with an object that conforms to the <i>IteratorResult</i> interface. Invoking this method notifies the <i>AsyncIterator</i> object that the caller does not intend to make any more `next` method calls to the <i>AsyncIterator</i>. The returned promise will fulfil with an <i>IteratorResult</i> object which will typically have a *"done"* property whose value is *true*, and a *"value"* property with the value passed as the argument of the `return` method. However, this requirement is not enforced.</p>
 
-                <p>Additionally, the <i>IteratorResult</i> object that serves as a fulfillment value should have a *"value"* property whose value is not a promise (or "thenable"). If the argument value is used in the typical manner, then if it is a rejected promise, a promise rejected with the same reason should be returned; if it is a fulfilled promise, then its fulfillment value should be used as the *"value"* property of the returned promise's <i>IteratorResult</i> object fulfillment value. However, these requirements are also not enforced.</p>
+                <p>Additionally, the <i>IteratorResult</i> object that serves as a fulfilment value should have a *"value"* property whose value is not a promise (or "thenable"). If the argument value is used in the typical manner, then if it is a rejected promise, a promise rejected with the same reason should be returned; if it is a fulfilled promise, then its fulfilment value should be used as the *"value"* property of the returned promise's <i>IteratorResult</i> object fulfilment value. However, these requirements are also not enforced.</p>
               </td>
             </tr>
             <tr>
               <td>*"throw"*</td>
               <td>a function that returns a promise for an <i>IteratorResult</i> object</td>
               <td>
-                <p>The returned promise, when fulfilled, must fulfill with an object that conforms to the <i>IteratorResult</i> interface. Invoking this method notifies the <i>AsyncIterator</i> object that the caller has detected an error condition. The argument may be used to identify the error condition and typically will be an exception object. A typical response is to return a rejected promise which rejects with the value passed as the argument.</p>
+                <p>The returned promise, when fulfilled, must fulfil with an object that conforms to the <i>IteratorResult</i> interface. Invoking this method notifies the <i>AsyncIterator</i> object that the caller has detected an error condition. The argument may be used to identify the error condition and typically will be an exception object. A typical response is to return a rejected promise which rejects with the value passed as the argument.</p>
 
-                <p>If the returned promise is fulfilled, the <i>IteratorResult</i> fulfillment value will typically have a *"done"* property whose value is *true*. Additionally, it should have a *"value"* property whose value is not a promise (or "thenable"), but this requirement is not enforced.</p>
+                <p>If the returned promise is fulfilled, the <i>IteratorResult</i> fulfilment value will typically have a *"done"* property whose value is *true*. Additionally, it should have a *"value"* property whose value is not a promise (or "thenable"), but this requirement is not enforced.</p>
               </td>
             </tr>
           </table>
@@ -46771,7 +46771,7 @@ THH:mm:ss.sss
                 [[Type]]
               </td>
               <td>
-                ~fulfill~ or ~reject~
+                ~fulfil~ or ~reject~
               </td>
               <td>
                 The [[Type]] is used when [[Handler]] is ~empty~ to allow for behaviour specific to the settlement type.
@@ -46848,7 +46848,7 @@ THH:mm:ss.sss
               1. Perform RejectPromise(_promise_, _selfResolutionError_).
               1. Return *undefined*.
             1. If _resolution_ is not an Object, then
-              1. Perform FulfillPromise(_promise_, _resolution_).
+              1. Perform FulfilPromise(_promise_, _resolution_).
               1. Return *undefined*.
             1. Let _then_ be Completion(Get(_resolution_, *"then"*)).
             1. If _then_ is an abrupt completion, then
@@ -46856,7 +46856,7 @@ THH:mm:ss.sss
               1. Return *undefined*.
             1. Let _thenAction_ be _then_.[[Value]].
             1. If IsCallable(_thenAction_) is *false*, then
-              1. Perform FulfillPromise(_promise_, _resolution_).
+              1. Perform FulfilPromise(_promise_, _resolution_).
               1. Return *undefined*.
             1. Let _thenJobCallback_ be HostMakeJobCallback(_thenAction_).
             1. Let _job_ be NewPromiseResolveThenableJob(_promise_, _resolution_, _thenJobCallback_).
@@ -46869,7 +46869,7 @@ THH:mm:ss.sss
 
       <emu-clause id="sec-fulfillpromise" type="abstract operation">
         <h1>
-          FulfillPromise (
+          FulfilPromise (
             _promise_: a Promise,
             _value_: an ECMAScript language value,
           ): ~unused~
@@ -46878,9 +46878,9 @@ THH:mm:ss.sss
         </dl>
         <emu-alg>
           1. Assert: The value of _promise_.[[PromiseState]] is ~pending~.
-          1. Let _reactions_ be _promise_.[[PromiseFulfillReactions]].
+          1. Let _reactions_ be _promise_.[[PromiseFulfilReactions]].
           1. Set _promise_.[[PromiseResult]] to _value_.
-          1. Set _promise_.[[PromiseFulfillReactions]] to *undefined*.
+          1. Set _promise_.[[PromiseFulfilReactions]] to *undefined*.
           1. Set _promise_.[[PromiseRejectReactions]] to *undefined*.
           1. Set _promise_.[[PromiseState]] to ~fulfilled~.
           1. Perform TriggerPromiseReactions(_reactions_, _value_).
@@ -46949,7 +46949,7 @@ THH:mm:ss.sss
           1. Assert: The value of _promise_.[[PromiseState]] is ~pending~.
           1. Let _reactions_ be _promise_.[[PromiseRejectReactions]].
           1. Set _promise_.[[PromiseResult]] to _reason_.
-          1. Set _promise_.[[PromiseFulfillReactions]] to *undefined*.
+          1. Set _promise_.[[PromiseFulfilReactions]] to *undefined*.
           1. Set _promise_.[[PromiseRejectReactions]] to *undefined*.
           1. Set _promise_.[[PromiseState]] to ~rejected~.
           1. If _promise_.[[PromiseIsHandled]] is *false*, perform HostPromiseRejectionTracker(_promise_, *"reject"*).
@@ -47027,7 +47027,7 @@ THH:mm:ss.sss
             1. Let _type_ be _reaction_.[[Type]].
             1. Let _handler_ be _reaction_.[[Handler]].
             1. If _handler_ is ~empty~, then
-              1. If _type_ is ~fulfill~, then
+              1. If _type_ is ~fulfil~, then
                 1. Let _handlerResult_ be NormalCompletion(_argument_).
               1. Else,
                 1. Assert: _type_ is ~reject~.
@@ -47098,9 +47098,9 @@ THH:mm:ss.sss
         <emu-alg>
           1. If NewTarget is *undefined*, throw a *TypeError* exception.
           1. If IsCallable(_executor_) is *false*, throw a *TypeError* exception.
-          1. Let _promise_ be ? OrdinaryCreateFromConstructor(NewTarget, *"%Promise.prototype%"*, « [[PromiseState]], [[PromiseResult]], [[PromiseFulfillReactions]], [[PromiseRejectReactions]], [[PromiseIsHandled]] »).
+          1. Let _promise_ be ? OrdinaryCreateFromConstructor(NewTarget, *"%Promise.prototype%"*, « [[PromiseState]], [[PromiseResult]], [[PromiseFulfilReactions]], [[PromiseRejectReactions]], [[PromiseIsHandled]] »).
           1. Set _promise_.[[PromiseState]] to ~pending~.
-          1. Set _promise_.[[PromiseFulfillReactions]] to a new empty List.
+          1. Set _promise_.[[PromiseFulfilReactions]] to a new empty List.
           1. Set _promise_.[[PromiseRejectReactions]] to a new empty List.
           1. Set _promise_.[[PromiseIsHandled]] to *false*.
           1. Let _resolvingFunctions_ be CreateResolvingFunctions(_promise_).
@@ -47111,7 +47111,7 @@ THH:mm:ss.sss
         </emu-alg>
         <emu-note>
           <p>The _executor_ argument must be a function object. It is called for initiating and reporting completion of the possibly deferred action represented by this Promise. The executor is called with two arguments: _resolve_ and _reject_. These are functions that may be used by the _executor_ function to report eventual completion or failure of the deferred computation. Returning from the executor function does not mean that the deferred action has been completed but only that the request to eventually perform the deferred action has been accepted.</p>
-          <p>The _resolve_ function that is passed to an _executor_ function accepts a single argument. The _executor_ code may eventually call the _resolve_ function to indicate that it wishes to resolve the associated Promise. The argument passed to the _resolve_ function represents the eventual value of the deferred action and can be either the actual fulfillment value or another promise which will provide the value if it is fulfilled.</p>
+          <p>The _resolve_ function that is passed to an _executor_ function accepts a single argument. The _executor_ code may eventually call the _resolve_ function to indicate that it wishes to resolve the associated Promise. The argument passed to the _resolve_ function represents the eventual value of the deferred action and can be either the actual fulfilment value or another promise which will provide the value if it is fulfilled.</p>
           <p>The _reject_ function that is passed to an _executor_ function accepts a single argument. The _executor_ code may eventually call the _reject_ function to indicate that the associated Promise is rejected and will never be fulfilled. The argument passed to the _reject_ function is used as the rejection value of the promise. Typically it will be an Error object.</p>
           <p>The resolve and reject functions passed to an _executor_ function by the Promise constructor have the capability to actually resolve and reject the associated promise. Subclasses may have different constructor behaviour that passes in customized values for resolve and reject.</p>
         </emu-note>
@@ -47128,7 +47128,7 @@ THH:mm:ss.sss
 
       <emu-clause id="sec-promise.all">
         <h1>Promise.all ( _iterable_ )</h1>
-        <p>This function returns a new promise which is fulfilled with an array of fulfillment values for the passed promises, or rejects with the reason of the first passed promise that rejects. It resolves all elements of the passed iterable to promises as it runs this algorithm.</p>
+        <p>This function returns a new promise which is fulfilled with an array of fulfilment values for the passed promises, or rejects with the reason of the first passed promise that rejects. It resolves all elements of the passed iterable to promises as it runs this algorithm.</p>
         <emu-alg>
           1. Let _C_ be the *this* value.
           1. Let _promiseCapability_ be ? NewPromiseCapability(_C_).
@@ -47646,15 +47646,15 @@ THH:mm:ss.sss
               1. Let _onRejectedJobCallback_ be ~empty~.
             1. Else,
               1. Let _onRejectedJobCallback_ be HostMakeJobCallback(_onRejected_).
-            1. Let _fulfillReaction_ be the PromiseReaction Record { [[Capability]]: _resultCapability_, [[Type]]: ~fulfill~, [[Handler]]: _onFulfilledJobCallback_ }.
+            1. Let _fulfilReaction_ be the PromiseReaction Record { [[Capability]]: _resultCapability_, [[Type]]: ~fulfil~, [[Handler]]: _onFulfilledJobCallback_ }.
             1. Let _rejectReaction_ be the PromiseReaction Record { [[Capability]]: _resultCapability_, [[Type]]: ~reject~, [[Handler]]: _onRejectedJobCallback_ }.
             1. If _promise_.[[PromiseState]] is ~pending~, then
-              1. Append _fulfillReaction_ to _promise_.[[PromiseFulfillReactions]].
+              1. Append _fulfilReaction_ to _promise_.[[PromiseFulfilReactions]].
               1. Append _rejectReaction_ to _promise_.[[PromiseRejectReactions]].
             1. Else if _promise_.[[PromiseState]] is ~fulfilled~, then
               1. Let _value_ be _promise_.[[PromiseResult]].
-              1. Let _fulfillJob_ be NewPromiseReactionJob(_fulfillReaction_, _value_).
-              1. Perform HostEnqueuePromiseJob(_fulfillJob_.[[Job]], _fulfillJob_.[[Realm]]).
+              1. Let _fulfilJob_ be NewPromiseReactionJob(_fulfilReaction_, _value_).
+              1. Perform HostEnqueuePromiseJob(_fulfilJob_.[[Job]], _fulfilJob_.[[Realm]]).
             1. Else,
               1. Assert: The value of _promise_.[[PromiseState]] is ~rejected~.
               1. Let _reason_ be _promise_.[[PromiseResult]].
@@ -47719,7 +47719,7 @@ THH:mm:ss.sss
           </tr>
           <tr>
             <td>
-              [[PromiseFulfillReactions]]
+              [[PromiseFulfilReactions]]
             </td>
             <td>
               a List of PromiseReaction Records
@@ -47747,7 +47747,7 @@ THH:mm:ss.sss
               a Boolean
             </td>
             <td>
-              Indicates whether the promise has ever had a fulfillment or rejection handler; used in unhandled rejection tracking.
+              Indicates whether the promise has ever had a fulfilment or rejection handler; used in unhandled rejection tracking.
             </td>
           </tr>
         </table>
