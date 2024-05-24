@@ -20439,8 +20439,7 @@
       <emu-alg>
         1. Let _lref_ be ? Evaluation of |LogicalANDExpression|.
         1. Let _lval_ be ? GetValue(_lref_).
-        1. Let _lbool_ be ToBoolean(_lval_).
-        1. If _lbool_ is *false*, return _lval_.
+        1. If ToBoolean(_lval_) is *false*, return _lval_.
         1. Let _rref_ be ? Evaluation of |BitwiseORExpression|.
         1. Return ? GetValue(_rref_).
       </emu-alg>
@@ -20448,8 +20447,7 @@
       <emu-alg>
         1. Let _lref_ be ? Evaluation of |LogicalORExpression|.
         1. Let _lval_ be ? GetValue(_lref_).
-        1. Let _lbool_ be ToBoolean(_lval_).
-        1. If _lbool_ is *true*, return _lval_.
+        1. If ToBoolean(_lval_) is *true*, return _lval_.
         1. Let _rref_ be ? Evaluation of |LogicalANDExpression|.
         1. Return ? GetValue(_rref_).
       </emu-alg>
@@ -20595,8 +20593,7 @@
       <emu-alg>
         1. Let _lref_ be ? Evaluation of |LeftHandSideExpression|.
         1. [id="step-assignmentexpression-evaluation-lgcl-and-getvalue"] Let _lval_ be ? GetValue(_lref_).
-        1. Let _lbool_ be ToBoolean(_lval_).
-        1. If _lbool_ is *false*, return _lval_.
+        1. If ToBoolean(_lval_) is *false*, return _lval_.
         1. If IsAnonymousFunctionDefinition(|AssignmentExpression|) is *true* and IsIdentifierRef of |LeftHandSideExpression| is *true*, then
           1. Let _lhs_ be the StringValue of |LeftHandSideExpression|.
           1. Let _rval_ be ? NamedEvaluation of |AssignmentExpression| with argument _lhs_.
@@ -20610,8 +20607,7 @@
       <emu-alg>
         1. Let _lref_ be ? Evaluation of |LeftHandSideExpression|.
         1. [id="step-assignmentexpression-evaluation-lgcl-or-getvalue"] Let _lval_ be ? GetValue(_lref_).
-        1. Let _lbool_ be ToBoolean(_lval_).
-        1. If _lbool_ is *true*, return _lval_.
+        1. If ToBoolean(_lval_) is *true*, return _lval_.
         1. If IsAnonymousFunctionDefinition(|AssignmentExpression|) is *true* and IsIdentifierRef of |LeftHandSideExpression| is *true*, then
           1. Let _lhs_ be the StringValue of |LeftHandSideExpression|.
           1. Let _rval_ be ? NamedEvaluation of |AssignmentExpression| with argument _lhs_.
