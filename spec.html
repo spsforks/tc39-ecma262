@@ -48210,7 +48210,7 @@ THH:mm:ss.sss
       <emu-clause id="sec-generatoryield" type="abstract operation">
         <h1>
           GeneratorYield (
-            _iterNextObj_: an Object that conforms to the <i>IteratorResult</i> interface,
+            _iteratorResult_: an Object that conforms to the <i>IteratorResult</i> interface,
           ): either a normal completion containing an ECMAScript language value or an abrupt completion
         </h1>
         <dl class="header">
@@ -48223,7 +48223,7 @@ THH:mm:ss.sss
           1. Set _generator_.[[GeneratorState]] to ~suspended-yield~.
           1. Remove _genContext_ from the execution context stack and restore the execution context that is at the top of the execution context stack as the running execution context.
           1. Let _callerContext_ be the running execution context.
-          1. Resume _callerContext_ passing NormalCompletion(_iterNextObj_). If _genContext_ is ever resumed again, let _resumptionValue_ be the Completion Record with which it is resumed.
+          1. Resume _callerContext_ passing NormalCompletion(_iteratorResult_). If _genContext_ is ever resumed again, let _resumptionValue_ be the Completion Record with which it is resumed.
           1. Assert: If control reaches here, then _genContext_ is the running execution context again.
           1. Return _resumptionValue_.
         </emu-alg>
