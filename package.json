@@ -26,7 +26,7 @@
   "dependencies": {
   },
   "devDependencies": {
-    "ecmarkup": "^18.3.1",
+    "ecmarkup": "^19.0.0",
     "glob": "^7.1.6",
     "jsdom": "^15.0.0",
     "pagedjs": "^0.4.3",
