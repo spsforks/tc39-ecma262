@@ -32,9 +32,11 @@ let { stdout } = await execP(`git show "${BASE_REF}":spec.html | aspell ${ASPELL
 
 let existingWords = lines(stdout.trim());
 
-let existingComponents = Array.from(new Set(existingWords.flatMap(word =>
-  [ ...word.matchAll(/(?:^[a-z]|[A-Z])[a-z]{2,}/g).map(([w]) => w.toLowerCase()) ]
-)));
+let existingComponents = Array.from(new Set(
+  existingWords
+    .flatMap(word => [...word.matchAll(/(?:^[a-z]|[A-Z])[a-z]{2,}/g)])
+    .map(([w]) => w.toLowerCase())
+));
 
 ({ stdout } = await execP(`echo ${existingComponents.map(w => JSON.stringify(w)).join(' ')} | aspell ${ASPELL_OPTS} | sort -fu`));
 
@@ -64,6 +66,7 @@ if (misspellings.length > 0) {
     let [match, file, line, col, typo] = warning.match(/^([^:]+):(\d+):(\d+):(.*)$/);
     let title = 'Potential Typo';
     let message = `${JSON.stringify(typo)} is not a previously used word or composed of previously used words. Perhaps it is a typo?`;
+    // https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-a-warning-message
     console.log(`::warning file=${file},line=${line},endLine=${line},col=${col},endColumn=${col + typo.length},title=${title}::${message}`);
   }
 }
