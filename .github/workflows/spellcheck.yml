@@ -19,4 +19,4 @@ jobs:
         with:
           node-version: lts/*
           use-npm-ci: true
-      - run: node scripts/spellcheck.mjs "${GITHUB_BASE_REF}"
+      - run: node scripts/spellcheck.mjs origin/"${GITHUB_BASE_REF}"
