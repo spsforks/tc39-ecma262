@@ -10768,22 +10768,6 @@
             </tr>
             <tr>
               <td>
-                HasRestrictedGlobalProperty (N)
-              </td>
-              <td>
-                Determines if the argument is the name of a global object property that may not be shadowed by a global lexical binding.
-              </td>
-            </tr>
-            <tr>
-              <td>
-                CanDeclareGlobalVar (N)
-              </td>
-              <td>
-                Determines if a corresponding CreateGlobalVarBinding call would succeed if called for the same argument _N_.
-              </td>
-            </tr>
-            <tr>
-              <td>
                 CanDeclareGlobalFunction (N)
               </td>
               <td>
@@ -11058,16 +11042,14 @@
           </emu-alg>
         </emu-clause>
 
-        <emu-clause id="sec-hasrestrictedglobalproperty" type="concrete method">
+        <emu-clause id="sec-hasrestrictedglobalproperty" type="abstract operation">
           <h1>
             HasRestrictedGlobalProperty (
+              _envRec_: a Global Environment Record,
               _N_: a String,
             ): either a normal completion containing a Boolean or a throw completion
           </h1>
           <dl class="header">
-            <dt>for</dt>
-            <dd>a Global Environment Record _envRec_</dd>
-
             <dt>description</dt>
             <dd>It determines if the argument identifier is the name of a property of the global object that must not be shadowed by a global lexical binding.</dd>
           </dl>
@@ -11084,16 +11066,14 @@
           </emu-note>
         </emu-clause>
 
-        <emu-clause id="sec-candeclareglobalvar" type="concrete method">
+        <emu-clause id="sec-candeclareglobalvar" type="abstract operation">
           <h1>
             CanDeclareGlobalVar (
+              _envRec_: a Global Environment Record,
               _N_: a String,
             ): either a normal completion containing a Boolean or a throw completion
           </h1>
           <dl class="header">
-            <dt>for</dt>
-            <dd>a Global Environment Record _envRec_</dd>
-
             <dt>description</dt>
             <dd>It determines if a corresponding CreateGlobalVarBinding call would succeed if called for the same argument _N_. Redundant var declarations and var declarations for pre-existing global object properties are allowed.</dd>
           </dl>
@@ -25952,7 +25932,7 @@
         1. For each element _name_ of _lexNames_, do
           1. If HasVarDeclaration(_env_, _name_) is *true*, throw a *SyntaxError* exception.
           1. If HasLexicalDeclaration(_env_, _name_) is *true*, throw a *SyntaxError* exception.
-          1. Let _hasRestrictedGlobal_ be ? _env_.HasRestrictedGlobalProperty(_name_).
+          1. Let _hasRestrictedGlobal_ be ? HasRestrictedGlobalProperty(_env_, _name_).
           1. If _hasRestrictedGlobal_ is *true*, throw a *SyntaxError* exception.
         1. For each element _name_ of _varNames_, do
           1. If HasLexicalDeclaration(_env_, _name_) is *true*, throw a *SyntaxError* exception.
@@ -25974,7 +25954,7 @@
           1. If _d_ is either a |VariableDeclaration|, a |ForBinding|, or a |BindingIdentifier|, then
             1. For each String _vn_ of the BoundNames of _d_, do
               1. If _declaredFunctionNames_ does not contain _vn_, then
-                1. Let _vnDefinable_ be ? _env_.CanDeclareGlobalVar(_vn_).
+                1. Let _vnDefinable_ be ? CanDeclareGlobalVar(_env_, _vn_).
                 1. If _vnDefinable_ is *false*, throw a *TypeError* exception.
                 1. If _declaredVarNames_ does not contain _vn_, then
                   1. Append _vn_ to _declaredVarNames_.
@@ -29140,7 +29120,7 @@
               1. For each String _vn_ of the BoundNames of _d_, do
                 1. If _declaredFunctionNames_ does not contain _vn_, then
                   1. If _varEnv_ is a Global Environment Record, then
-                    1. Let _vnDefinable_ be ? _varEnv_.CanDeclareGlobalVar(_vn_).
+                    1. Let _vnDefinable_ be ? CanDeclareGlobalVar(_varEnv_, _vn_).
                     1. If _vnDefinable_ is *false*, throw a *TypeError* exception.
                   1. If _declaredVarNames_ does not contain _vn_, then
                     1. Append _vn_ to _declaredVarNames_.
@@ -51031,7 +51011,7 @@ THH:mm:ss.sss
                 1. Let _F_ be the StringValue of the |BindingIdentifier| of _f_.
                 1. If replacing the |FunctionDeclaration| _f_ with a |VariableStatement| that has _F_ as a |BindingIdentifier| would not produce any Early Errors for _script_, then
                   1. If HasLexicalDeclaration(_env_, _F_) is *false*, then
-                    1. Let _fnDefinable_ be ? _env_.CanDeclareGlobalVar(_F_).
+                    1. Let _fnDefinable_ be ? CanDeclareGlobalVar(_env_, _F_).
                     1. If _fnDefinable_ is *true*, then
                       1. NOTE: A var binding for _F_ is only instantiated here if it is neither a VarDeclaredName nor the name of another |FunctionDeclaration|.
                       1. If _declaredFunctionOrVarNames_ does not contain _F_, then
@@ -51065,7 +51045,7 @@ THH:mm:ss.sss
                   1. Set _thisEnv_ to _thisEnv_.[[OuterEnv]].
                 1. If _bindingExists_ is *false* and _varEnv_ is a Global Environment Record, then
                   1. If HasLexicalDeclaration(_varEnv_, _F_) is *false*, then
-                    1. Let _fnDefinable_ be ? _varEnv_.CanDeclareGlobalVar(_F_).
+                    1. Let _fnDefinable_ be ? CanDeclareGlobalVar(_varEnv_, _F_).
                   1. Else,
                     1. Let _fnDefinable_ be *false*.
                 1. Else,
