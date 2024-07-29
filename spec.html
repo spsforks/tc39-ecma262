@@ -10594,14 +10594,6 @@
             </thead>
             <tr>
               <td>
-                BindThisValue(V)
-              </td>
-              <td>
-                Set the [[ThisValue]] and record that it has been initialized.
-              </td>
-            </tr>
-            <tr>
-              <td>
                 GetThisBinding()
               </td>
               <td>
@@ -10620,15 +10612,16 @@
         </emu-table>
         <p>The behaviour of the additional concrete specification methods for Function Environment Records is defined by the following algorithms:</p>
 
-        <emu-clause id="sec-bindthisvalue" type="concrete method">
+        <emu-clause id="sec-bindthisvalue" type="abstract operation">
           <h1>
             BindThisValue (
+              _envRec_: a Function Environment Record,
               _V_: an ECMAScript language value,
             ): either a normal completion containing an ECMAScript language value or a throw completion
           </h1>
           <dl class="header">
-            <dt>for</dt>
-            <dd>a Function Environment Record _envRec_</dd>
+            <dt>description</dt>
+            <dd>It sets the _envRec_.[[ThisValue]] and records that it has been initialized.</dd>
           </dl>
           <emu-alg>
             1. Assert: _envRec_.[[ThisBindingStatus]] is not ~lexical~.
@@ -13343,7 +13336,7 @@
               1. NOTE: ToObject produces wrapper objects using _calleeRealm_.
           1. Assert: _localEnv_ is a Function Environment Record.
           1. Assert: The next step never returns an abrupt completion because _localEnv_.[[ThisBindingStatus]] is not ~initialized~.
-          1. Perform ! _localEnv_.BindThisValue(_thisValue_).
+          1. Perform ! BindThisValue(_localEnv_, _thisValue_).
           1. Return ~unused~.
         </emu-alg>
       </emu-clause>
@@ -19344,7 +19337,7 @@
           1. If IsConstructor(_func_) is *false*, throw a *TypeError* exception.
           1. Let _result_ be ? Construct(_func_, _argList_, _newTarget_).
           1. Let _thisER_ be GetThisEnvironment().
-          1. Perform ? _thisER_.BindThisValue(_result_).
+          1. Perform ? BindThisValue(_thisER_, _result_).
           1. Let _F_ be _thisER_.[[FunctionObject]].
           1. Assert: _F_ is an ECMAScript function object.
           1. Perform ? InitializeInstanceElements(_result_, _F_).
