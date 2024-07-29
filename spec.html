@@ -10609,7 +10609,7 @@
             BindThisValue (
               _envRec_: a Function Environment Record,
               _V_: an ECMAScript language value,
-            ): either a normal completion containing an ECMAScript language value or a throw completion
+            ): either a normal completion containing ~unused~ or a throw completion
           </h1>
           <dl class="header">
             <dt>description</dt>
@@ -10620,7 +10620,7 @@
             1. If _envRec_.[[ThisBindingStatus]] is ~initialized~, throw a *ReferenceError* exception.
             1. Set _envRec_.[[ThisValue]] to _V_.
             1. Set _envRec_.[[ThisBindingStatus]] to ~initialized~.
-            1. Return _V_.
+            1. Return ~unused~.
           </emu-alg>
         </emu-clause>
 
