@@ -10766,14 +10766,6 @@
                 Return the value of this Environment Record's `this` binding.
               </td>
             </tr>
-            <tr>
-              <td>
-                CreateGlobalFunctionBinding(N, V, D)
-              </td>
-              <td>
-                Create and initialize a global `function` binding in the [[ObjectRecord]] component of a Global Environment Record. The binding will be a mutable binding. The corresponding global object property will have attribute values appropriate for a `function`. The String value _N_ is the bound name. _V_ is the initialization value. If the Boolean argument _D_ is *true*, the binding may be deleted. Logically equivalent to CreateMutableBinding followed by a SetMutableBinding but it allows function declarations to receive special treatment.
-              </td>
-            </tr>
           </table>
         </emu-table>
         <p>The behaviour of the concrete specification methods for Global Environment Records is defined by the following algorithms.</p>
@@ -11118,18 +11110,16 @@
           </emu-alg>
         </emu-clause>
 
-        <emu-clause id="sec-createglobalfunctionbinding" type="concrete method">
+        <emu-clause id="sec-createglobalfunctionbinding" type="abstract operation">
           <h1>
             CreateGlobalFunctionBinding (
+              _envRec_: a Global Environment Record,
               _N_: a String,
               _V_: an ECMAScript language value,
               _D_: a Boolean,
             ): either a normal completion containing ~unused~ or a throw completion
           </h1>
           <dl class="header">
-            <dt>for</dt>
-            <dd>a Global Environment Record _envRec_</dd>
-
             <dt>description</dt>
             <dd>It creates and initializes a mutable binding in the associated Object Environment Record and records the bound name in the associated [[VarNames]] List. If a binding already exists, it is replaced.</dd>
           </dl>
@@ -25952,7 +25942,7 @@
         1. For each Parse Node _f_ of _functionsToInitialize_, do
           1. Let _fn_ be the sole element of the BoundNames of _f_.
           1. Let _fo_ be InstantiateFunctionObject of _f_ with arguments _env_ and _privateEnv_.
-          1. Perform ? <emu-meta effects="user-code">_env_.CreateGlobalFunctionBinding</emu-meta>(_fn_, _fo_, *false*).
+          1. Perform ? <emu-meta effects="user-code">CreateGlobalFunctionBinding</emu-meta>(_env_, _fn_, _fo_, *false*).
         1. For each String _vn_ of _declaredVarNames_, do
           1. Perform ? <emu-meta effects="user-code">CreateGlobalVarBinding</emu-meta>(_env_, _vn_, *false*).
         1. Return ~unused~.
@@ -29118,7 +29108,7 @@
             1. Let _fn_ be the sole element of the BoundNames of _f_.
             1. Let _fo_ be InstantiateFunctionObject of _f_ with arguments _lexEnv_ and _privateEnv_.
             1. If _varEnv_ is a Global Environment Record, then
-              1. Perform ? _varEnv_.CreateGlobalFunctionBinding(_fn_, _fo_, *true*).
+              1. Perform ? CreateGlobalFunctionBinding(_varEnv_, _fn_, _fo_, *true*).
             1. Else,
               1. Let _bindingExists_ be ! _varEnv_.HasBinding(_fn_).
               1. If _bindingExists_ is *false*, then
