@@ -11161,14 +11161,6 @@
             </thead>
             <tr>
               <td>
-                CreateImportBinding(N, M, N2)
-              </td>
-              <td>
-                Create an immutable indirect binding in a Module Environment Record. The String value _N_ is the text of the bound name. _M_ is a Module Record, and _N2_ is a binding that exists in _M_'s Module Environment Record.
-              </td>
-            </tr>
-            <tr>
-              <td>
                 GetThisBinding()
               </td>
               <td>
@@ -11242,20 +11234,18 @@
           </emu-alg>
         </emu-clause>
 
-        <emu-clause id="sec-createimportbinding" type="concrete method">
+        <emu-clause id="sec-createimportbinding" type="abstract operation">
           <h1>
             CreateImportBinding (
+              _envRec_: a Module Environment Record,
               _N_: a String,
               _M_: a Module Record,
               _N2_: a String,
             ): ~unused~
           </h1>
           <dl class="header">
-            <dt>for</dt>
-            <dd>a Module Environment Record _envRec_</dd>
-
             <dt>description</dt>
-            <dd>It creates a new initialized immutable indirect binding for the name _N_. A binding must not already exist in this Environment Record for _N_. _N2_ is the name of a binding that exists in _M_'s Module Environment Record. Accesses to the value of the new binding will indirectly access the bound value of the target binding.</dd>
+            <dd>It creates a new initialized immutable indirect binding for the name _N_. A binding must not already exist in _envRec_ for _N_. _N2_ is the name of a binding that exists in _M_'s Module Environment Record. Accesses to the value of the new binding will indirectly access the bound value of the target binding.</dd>
           </dl>
           <emu-alg>
             1. Assert: _envRec_ does not already have a binding for _N_.
@@ -28050,7 +28040,7 @@
                   1. Perform ! _env_.CreateImmutableBinding(_in_.[[LocalName]], *true*).
                   1. Perform ! _env_.InitializeBinding(_in_.[[LocalName]], _namespace_).
                 1. Else,
-                  1. Perform _env_.CreateImportBinding(_in_.[[LocalName]], _resolution_.[[Module]], _resolution_.[[BindingName]]).
+                  1. Perform CreateImportBinding(_env_, _in_.[[LocalName]], _resolution_.[[Module]], _resolution_.[[BindingName]]).
             1. Let _moduleContext_ be a new ECMAScript code execution context.
             1. Set the Function of _moduleContext_ to *null*.
             1. Assert: _module_.[[Realm]] is not *undefined*.
