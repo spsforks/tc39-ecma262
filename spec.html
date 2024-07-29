@@ -10768,14 +10768,6 @@
             </tr>
             <tr>
               <td>
-                HasVarDeclaration (N)
-              </td>
-              <td>
-                Determines if the argument identifier has a binding in this Environment Record that was created using a |VariableDeclaration|, |FunctionDeclaration|, |GeneratorDeclaration|, |AsyncFunctionDeclaration|, or |AsyncGeneratorDeclaration|.
-              </td>
-            </tr>
-            <tr>
-              <td>
                 HasLexicalDeclaration (N)
               </td>
               <td>
@@ -11039,18 +11031,16 @@
           </emu-alg>
         </emu-clause>
 
-        <emu-clause id="sec-hasvardeclaration" type="concrete method">
+        <emu-clause id="sec-hasvardeclaration" type="abstract operation">
           <h1>
             HasVarDeclaration (
+              _envRec_: a Global Environment Record,
               _N_: a String,
             ): a Boolean
           </h1>
           <dl class="header">
-            <dt>for</dt>
-            <dd>a Global Environment Record _envRec_</dd>
-
             <dt>description</dt>
-            <dd>It determines if the argument identifier has a binding in this record that was created using a |VariableStatement| or a |FunctionDeclaration|.</dd>
+            <dd>It determines if the argument identifier has a binding in _envRec_ that was created using a |VariableDeclaration|, |FunctionDeclaration|, |GeneratorDeclaration|, |AsyncFunctionDeclaration|, or |AsyncGeneratorDeclaration|.</dd>
           </dl>
           <emu-alg>
             1. Let _varDeclaredNames_ be _envRec_.[[VarNames]].
@@ -25970,7 +25960,7 @@
         1. Let _lexNames_ be the LexicallyDeclaredNames of _script_.
         1. Let _varNames_ be the VarDeclaredNames of _script_.
         1. For each element _name_ of _lexNames_, do
-          1. If _env_.HasVarDeclaration(_name_) is *true*, throw a *SyntaxError* exception.
+          1. If HasVarDeclaration(_env_, _name_) is *true*, throw a *SyntaxError* exception.
           1. If _env_.HasLexicalDeclaration(_name_) is *true*, throw a *SyntaxError* exception.
           1. Let _hasRestrictedGlobal_ be ? _env_.HasRestrictedGlobalProperty(_name_).
           1. If _hasRestrictedGlobal_ is *true*, throw a *SyntaxError* exception.
