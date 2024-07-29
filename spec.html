@@ -10768,14 +10768,6 @@
             </tr>
             <tr>
               <td>
-                CanDeclareGlobalFunction (N)
-              </td>
-              <td>
-                Determines if a corresponding CreateGlobalFunctionBinding call would succeed if called for the same argument _N_.
-              </td>
-            </tr>
-            <tr>
-              <td>
                 CreateGlobalVarBinding(N, D)
               </td>
               <td>
@@ -11086,16 +11078,14 @@
           </emu-alg>
         </emu-clause>
 
-        <emu-clause id="sec-candeclareglobalfunction" type="concrete method">
+        <emu-clause id="sec-candeclareglobalfunction" type="abstract operation">
           <h1>
             CanDeclareGlobalFunction (
+              _envRec_: a Global Environment Record,
               _N_: a String,
             ): either a normal completion containing a Boolean or a throw completion
           </h1>
           <dl class="header">
-            <dt>for</dt>
-            <dd>a Global Environment Record _envRec_</dd>
-
             <dt>description</dt>
             <dd>It determines if a corresponding CreateGlobalFunctionBinding call would succeed if called for the same argument _N_.</dd>
           </dl>
@@ -25945,7 +25935,7 @@
             1. NOTE: If there are multiple function declarations for the same name, the last declaration is used.
             1. Let _fn_ be the sole element of the BoundNames of _d_.
             1. If _declaredFunctionNames_ does not contain _fn_, then
-              1. Let _fnDefinable_ be ? _env_.CanDeclareGlobalFunction(_fn_).
+              1. Let _fnDefinable_ be ? CanDeclareGlobalFunction(_env_, _fn_).
               1. If _fnDefinable_ is *false*, throw a *TypeError* exception.
               1. Append _fn_ to _declaredFunctionNames_.
               1. Insert _d_ as the first element of _functionsToInitialize_.
@@ -29110,7 +29100,7 @@
               1. Let _fn_ be the sole element of the BoundNames of _d_.
               1. If _declaredFunctionNames_ does not contain _fn_, then
                 1. If _varEnv_ is a Global Environment Record, then
-                  1. Let _fnDefinable_ be ? _varEnv_.CanDeclareGlobalFunction(_fn_).
+                  1. Let _fnDefinable_ be ? CanDeclareGlobalFunction(_varEnv_, _fn_).
                   1. If _fnDefinable_ is *false*, throw a *TypeError* exception.
                 1. Append _fn_ to _declaredFunctionNames_.
                 1. Insert _d_ as the first element of _functionsToInitialize_.
